@@ -16,19 +16,10 @@
 <script src='../threex.videograbbing.js'></script>
 <script src='../threex.jsarucomarker.js'></script>
 <script src='../../threex.videotexture-master/threex.videotexture.js'></script>
-<div style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px;'>
-	<br/>
-	<button onclick='onVideoPlayButtonClick()'>play</button>
-	<button onclick='onVideoPauseButtonClick()'>pause</button>
-</div>
-<body style='margin: 0px; overflow: hidden;'>
+
 
 <div id='info' style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px; text-align:center;'>
-	El Mappache usa <a href="http://threejs.org" target="_blank">three.js</a>
-	- anda en la web.(tu celu, o tu compu)
-	<br/>
-	require <a href='https://get.webgl.org/'>WebGL</a> and <a href='http://caniuse.com/#feat=stream'>getUserMedia</a> Support
-	-
+
 	Estamos usando este <a target='blank' href='http://mappache.github.io/testing/marker/built-single-marker.html'>Codigo QR</a>
 
 	<br/>
@@ -36,7 +27,14 @@
 	<a class='webcam' href='javascript:void();'>webcam</a>
 	<!--<a class='image'  href='javascript:void();'></a>
 	<a class='video'  href='javascript:void();'></a> -->
+  <br/>
+  <button onclick='onVideoPlayButtonClick()'>play</button>
+  <button onclick='onVideoPauseButtonClick()'>pause</button>
 </div>
+
+<body style='margin: 0px; overflow: hidden;'>
+
+
 
 <div id='performanceEnabler' style='position: absolute; top: 0px; right: 0px; text-align: right;background-color:rgba(255,255,255,0.5);padding-left: 10px; padding-bottom: 10px;border-width: 1px;
   border-style: solid;'>
@@ -180,9 +178,9 @@
   var canPlayMp4	= document.createElement('video').canPlayType('video/mp4') !== '' ? true : false
   var canPlayOgg	= document.createElement('video').canPlayType('video/ogg') !== '' ? true : false
   if( canPlayMp4 ){
-    var url	= '../../threex.videotexture-master/videos/sintel.mp4'
+    var url	= 'videos/sintel.mp4'
   }else if( canPlayOgg ){
-    var url	= '../../threex.videotexture-master/videos/sintel.ogv'
+    var url	= 'videos/sintel.ogv'
   }else	alert('cant play mp4 or ogv')
 
   // create the videoTexture
