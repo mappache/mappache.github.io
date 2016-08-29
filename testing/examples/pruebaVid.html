@@ -200,6 +200,7 @@
   updateFcts.push(function(delta, now){
     mesh.rotation.x += 1 * delta;
     mesh.rotation.y += 2 * delta;
+    markerObject3D.add( mesh );
   })
 
   function onVideoPlayButtonClick(){
