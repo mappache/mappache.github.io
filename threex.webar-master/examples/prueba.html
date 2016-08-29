@@ -18,15 +18,15 @@
 <body style='margin: 0px; overflow: hidden;'>
 
 <div id='info' style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px; text-align:center;'>
-	Augmented Reality with <a href="http://threejs.org" target="_blank">three.js</a>
-	- works on desktop and mobile
+	El Mappache usa <a href="http://threejs.org" target="_blank">three.js</a>
+	- anda en la web.(tu celu, o tu compu)
 	<br/>
 	require <a href='https://get.webgl.org/'>WebGL</a> and <a href='http://caniuse.com/#feat=stream'>getUserMedia</a> Support
 	-
-	Put this <a target='blank' href='http://jeromeetienne.github.io/threex.webar/marker/image-marker-265.html'>marker</a>
-	in front of the camera
+	Estamos usando este <a target='blank' href='http://jeromeetienne.github.io/threex.webar/marker/image-marker-265.html'>Codigo QR</a>
+	por ahora
 	<br/>
-	Source:
+	Que queremos mirar?:
 	<a class='webcam' href='javascript:void();'>webcam</a> -
 	<a class='image'  href='javascript:void();'>image</a> -
 	<a class='video'  href='javascript:void();'>video</a>
@@ -185,7 +185,7 @@
 	// add a awesome logo to the scene
 	;(function(){
 		var material = new THREE.SpriteMaterial({
-			map: THREE.ImageUtils.loadTexture( './teepee.gif' ),
+			map: THREE.ImageUtils.loadTexture( 'images/teepee.gif' ),
 		});
 		var geometry = new THREE.BoxGeometry(1,1,1)
 		var object3d = new THREE.Sprite(material );
