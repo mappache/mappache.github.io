@@ -15,7 +15,11 @@
 <script src='../threex.videograbbing.js'></script>
 <script src='../threex.jsarucomarker.js'></script>
 <script src='../../threex.videotexture-master/threex.videotexture.js'></script>
-
+<div style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px;'>
+	<br/>
+	<button onclick='onVideoPlayButtonClick()'>play</button>
+	<button onclick='onVideoPauseButtonClick()'>pause</button>
+</div>
 <body style='margin: 0px; overflow: hidden;'>
 
 <div id='info' style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px; text-align:center;'>
@@ -198,6 +202,13 @@
     mesh.rotation.x += 1 * delta;
     mesh.rotation.y += 2 * delta;
   })
+
+  function onVideoPlayButtonClick(){
+    video.play()
+  }
+  function onVideoPauseButtonClick(){
+    video.pause()
+  }
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
