@@ -14,6 +14,7 @@
 <script src='../threex.imagegrabbing.js'></script>
 <script src='../threex.videograbbing.js'></script>
 <script src='../threex.jsarucomarker.js'></script>
+<script src='../../threex.videotexture-master/threex.videotexture.js'></script>
 
 <body style='margin: 0px; overflow: hidden;'>
 
@@ -28,8 +29,8 @@
 	<br/>
 	No te pide acceso a la camara? Proba pedirle:
 	<a class='webcam' href='javascript:void();'>webcam</a>
-	<a class='image'  href='javascript:void();'></a>
-	<a class='video'  href='javascript:void();'></a>
+	<!--<a class='image'  href='javascript:void();'></a>
+	<a class='video'  href='javascript:void();'></a> -->
 </div>
 <!--
 <div id='performanceEnabler' style='position: absolute; top: 0px; right: 0px; text-align: right;background-color:rgba(255,255,255,0.5);padding-left: 10px; padding-bottom: 10px;border-width: 1px;
@@ -130,7 +131,7 @@
 		location.reload()
 	})
 
-	document.querySelector('#info .image').addEventListener('click', function(event){
+	/*document.querySelector('#info .image').addEventListener('click', function(event){
 		location.hash	= '#image'
 		location.reload()
 	})
@@ -138,7 +139,7 @@
 	document.querySelector('#info .video').addEventListener('click', function(event){
 		location.hash	= '#video'
 		location.reload()
-	})
+	})*/
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Init
@@ -154,7 +155,7 @@
 
 	// array of functions for the rendering loop
 	var onRenderFcts = [];
-
+  var updateFcts	= [];
 	// init scene and camera
 	var scene = new THREE.Scene()
 	var camera	= new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
@@ -170,63 +171,68 @@
 	//		add an object in the markerObject3D
 	//////////////////////////////////////////////////////////////////////////////////
 
-	// add some debug display
-	;(function(){
-		var geometry = new THREE.PlaneGeometry(1,1,10,10)
-		var material = new THREE.MeshBasicMaterial( {
-			wireframe : true
-		})
-		var mesh = new THREE.Mesh(geometry, material);
-		markerObject3D.add( mesh );
+  // find out which file formats i can read
+  var canPlayMp4	= document.createElement('video').canPlayType('video/mp4') !== '' ? true : false
+  var canPlayOgg	= document.createElement('video').canPlayType('video/ogg') !== '' ? true : false
+  if( canPlayMp4 ){
+    var url	= '../../threex.videotexture-master/videos/sintel.mp4'
+  }else if( canPlayOgg ){
+    var url	= '../../threex.videotexture-master/videos/sintel.ogv'
+  }else	alert('cant play mp4 or ogv')
 
-		var mesh = new THREE.AxisHelper
-		markerObject3D.add( mesh );
-	})()
+  // create the videoTexture
+  var videoTexture= new THREEx.VideoTexture(url)
+  var video	= videoTexture.video
+  updateFcts.push(function(delta, now){
+    videoTexture.update(delta, now)
+  })
 
-	// add a awesome logo to the scene
-	;(function(){
-		var material = new THREE.SpriteMaterial({
-			map: THREE.ImageUtils.loadTexture( 'images/teepee.gif' ),
-		});
-		var geometry = new THREE.BoxGeometry(1,1,1)
-		var object3d = new THREE.Sprite(material );
-		object3d.scale.set( 2, 2, 1 );
-		markerObject3D.add(object3d)
-	})()
-
+  // use the texture in a THREE.Mesh
+  var geometry	= new THREE.CubeGeometry(1,1,1);
+  var material	= new THREE.MeshBasicMaterial({
+    map	: videoTexture.texture
+  });
+  var mesh	= new THREE.Mesh( geometry, material );
+  scene.add( mesh );
+  updateFcts.push(function(delta, now){
+    mesh.rotation.x += 1 * delta;
+    mesh.rotation.y += 2 * delta;
+  })
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
 
-	// handle window resize
-	window.addEventListener('resize', function(){
-		renderer.setSize( window.innerWidth, window.innerHeight )
-		camera.aspect	= window.innerWidth / window.innerHeight
-		camera.updateProjectionMatrix()
-	}, false)
+  // init Stats
+  var stats	= new Stats();
+  document.body.appendChild( stats.domElement );
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left	= '0px';
+  stats.domElement.style.bottom	= '0px';
+  updateFcts.push(function(){
+    stats.update()
+  })
 
 
-	// render the scene
-	onRenderFcts.push(function(){
-		renderStats.begin();
-		if( webglRenderEnabled === true ){
-			renderer.render( scene, camera );
-		}
-		renderStats.end();
-	})
+  updateFcts.push(function(){
+    renderer.render( scene, camera );
+  })
 
-	// run the rendering loop
-	var previousTime = performance.now()
-	requestAnimationFrame(function animate(now){
-
-		requestAnimationFrame( animate );
-
-		onRenderFcts.forEach(function(onRenderFct){
-			onRenderFct(now, now - previousTime)
-		})
-
-		previousTime	= now
-	})
+  //////////////////////////////////////////////////////////////////////////////////
+  //		loop runner							//
+  //////////////////////////////////////////////////////////////////////////////////
+  var lastTimeMsec= null
+  requestAnimationFrame(function animate(nowMsec){
+    // keep looping
+    requestAnimationFrame( animate );
+    // measure time
+    lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
+    var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
+    lastTimeMsec	= nowMsec
+    // call each update function
+    updateFcts.forEach(function(updateFn){
+      updateFn(deltaMsec/1000, nowMsec/1000)
+    })
+  })
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Do the Augmented Reality part
