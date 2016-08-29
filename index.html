@@ -12,27 +12,10 @@
   <body>
     <h1> Testing </h1>
     <div>
-    <a href="threex.webar-master/examples/basic.html">
-      <button class="btn btn-primary">Ver AR</button>
+    <a href="testing/examples/prueba.html">
+      <button class="btn btn-primary">Aumentá mi realidad, haceme tuya!</button>
     </a>
   </div>
-    <img src="http://placehold.it/350x150" title="Fafafi"/>
-    <div id="contact">
-      <label for="name">Name</label>
-      <input id="name"/>
-      <button id="buttonSubmit" class="btn btn-warning" type="submit">Send</button>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script>
-      $('#buttonSubmit').click((e)=>{
-        e.preventDefault();
-        const name = $('#name').val();
-        alert(name);
-        $.post('http://httpbin.org/post',{name:name}).done((data)=>{
-          console.log(data);
-        })
-      });  //string = seletor
-    </script>
 
     <script>
       /*const formContact = document.getElementById('contact'); // equiv. $('#contact')
