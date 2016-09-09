@@ -160,6 +160,7 @@
 	var camera	= new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
 	camera.position.z = 2;
 
+
 	//////////////////////////////////////////////////////////////////////////////////
 	//		create a markerObject3D
 	//////////////////////////////////////////////////////////////////////////////////
@@ -183,10 +184,10 @@
 		markerObject3D.add( mesh );
 	})()
 
-	// add a awesome logo to the scene
+	// add logo to the scene
 	;(function(){
 		var material = new THREE.SpriteMaterial({
-			map: THREE.ImageUtils.loadTexture( 'images/teepee.gif' ),
+			map: THREE.ImageUtils.loadTexture( 'images/mappache2.png' ),
 		});
 		var geometry = new THREE.BoxGeometry(1,1,1)
 		var object3d = new THREE.Sprite(material );
