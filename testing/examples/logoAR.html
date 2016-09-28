@@ -34,6 +34,22 @@
   </div>
   <script>
 
+    //////////////////////////////////////////////////////////////////////////////////
+    //		init Stats for detectMarkers
+    //////////////////////////////////////////////////////////////////////////////////
+    var detectMarkersStats = new Stats();
+    detectMarkersStats.setMode( 1 );
+    document.body.appendChild( detectMarkersStats.domElement );
+    detectMarkersStats.domElement.style.position = 'absolute'
+    detectMarkersStats.domElement.style.bottom = '0px'
+    detectMarkersStats.domElement.style.right = '0px'
+
+    var renderStats = new Stats();
+    renderStats.setMode( 0 );
+    document.body.appendChild( renderStats.domElement );
+    renderStats.domElement.style.position = 'absolute'
+    renderStats.domElement.style.bottom = '0px'
+    renderStats.domElement.style.left = '0px'
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Handle ui button //// que te acceda a la camara cuando cliqueas en 'webcam'
