@@ -30,7 +30,8 @@
   <h1>Mappache co. Testing Environment</h1>
   <div id='info' style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px; text-align:center;'>
     No te pide acceso a la camara? Haz click aca:
-  	<a class='webcam' href='javascript:void(0);'>webcam</a>
+  	<a class='webcam' href='javascript:void(0);'>webcam</a>;
+      Estamos usando este <a target='blank' href='http://mappache.github.io/testing/marker/built-single-marker.html'>Codigo QR</a>
   </div>
   <script>
 
@@ -130,7 +131,7 @@ function Anim(){
 
 ;(function(){
   var material = new THREE.SpriteMaterial({
-    map: THREE.ImageUtils.loadTexture( 'images/awesome.png' ),
+    map: THREE.ImageUtils.loadTexture( 'images/mappache2.png' ),
   });
   var geometry = new THREE.BoxGeometry(1,1,1)
   var object3d = new THREE.Sprite(material);
