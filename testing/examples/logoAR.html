@@ -139,7 +139,7 @@ function Anim(){
 
   // Load in the mesh and add it to the scene.
   var loader = new THREE.JSONLoader();
-  loader.load( "images/mappache.js", function(geometry){
+  loader.load( "images/mappache.json", function(geometry){
     var material = new THREE.MeshLambertMaterial({color: 0x55B663});
             //new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture( 'images/mappache2.jpg' )});
     mappache = new THREE.Mesh(geometry,material);
@@ -269,7 +269,7 @@ onRenderFcts.push(function(){
 
     markerObject3D.visible = true
     //Aca llamamos a las funciones para loopear
-    Anim() //modifique esto - max 
+    Anim() //modifique esto - max
   })
 })
   </script></body>
