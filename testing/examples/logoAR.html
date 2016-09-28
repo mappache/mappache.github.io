@@ -140,9 +140,10 @@ function Anim(){
   // Load in the mesh and add it to the scene.
   var loader = new THREE.JSONLoader();
   loader.load( "images/mappache.js", function(geometry){
-    var material = new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture( 'images/mappache2.jpg' )});
+    var material = new THREE.MeshLambertMaterial({color: 0x55B663});
+            //new THREE.MeshPhongMaterial({map: THREE.ImageUtils.loadTexture( 'images/mappache2.jpg' )});
     mappache = new THREE.Mesh(geometry,material);
-    //mano.rotation.y =  Math.PI /2;
+    mappache.rotation.y =  Math.PI /2;
     //mano.rotation.x = Math.PI /2;
 
     //mano.position.y = -1.4;
@@ -156,8 +157,8 @@ function Anim(){
     //pivot.position.y = 1.4;
     //pivot.position.z = 0.1;
     //pivot.add(mano);
-    mano.position.x = -0.6;
-    mano.position.y = -1.4;
+    //mano.position.x = -0.6;
+    //mano.position.y = -1.4;
     mano.position.z = -0.1;
 
     //pivot.rotation.x = Math.PI /2;
@@ -268,7 +269,7 @@ onRenderFcts.push(function(){
 
     markerObject3D.visible = true
     //Aca llamamos a las funciones para loopear
-    //Anim()
+    Anim() //modifique esto - max 
   })
 })
   </script></body>
