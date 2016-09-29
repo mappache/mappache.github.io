@@ -1,97 +1,39 @@
-<!DOCTYPE html>
 <html>
-<!-- include three.js -->
-<script src='vendor/three.js/build/three.js'></script>
-<script src='OBJLoader.js'></script>
-<script src='vendor/three.js/examples/js/libs/stats.min.js'></script>
-
-<!-- include js-aruco -->
-<script src='../vendor/js-aruco/svd.js'></script>
-<script src='../vendor/js-aruco/posit1-patched.js'></script>
-<script src='../vendor/js-aruco/cv.js'></script>
-<script src='../vendor/js-aruco/aruco.js'></script>
-
-<!-- include some extensions -->
-<script src='../threex.webcamgrabbing.js'></script>
-<script src='../threex.imagegrabbing.js'></script>
-<script src='../threex.videograbbing.js'></script>
-<script src='../threex.jsarucomarker.js'></script>
-
 <head>
-  <title>
-    MappacheCo.
-  </title>
-  <style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
-	</style>
+  <title>My first Three.js app</title>
+  <style>canvas { width: 100%; height: 100% }</style>
 </head>
+<body>
+<script src="js/three.min.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src='js/STLLoader.js'></script>
+<script src='js/OBJLoader.js'></script>
+<script>
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
+  var renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+  var geometry = new THREE.BoxGeometry(350, 350, 350, 10, 10, 10);
+  var material = new THREE.MeshBasicMaterial({color: 0xfffff, wireframe: true});
+  var cube = new THREE.Mesh(geometry, material);
+  /*var loader = new THREE.OBJLoader();
+  loader.load( 'images/mappache.obj', function ( geometry ) {
+      var material = new THREE.MeshLambertMaterial({color: 0x457371});
+      var logo = new THREE.Mesh( geometry, material);
+      scene.add(logo);
+  });*/
+  scene.add(cube);
+  camera.position.z = 1000;
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-<body style='margin: 0px; overflow: hidden;'>
-  <h1>Mappache co. Testing Environment</h1>
-  <!--<div id='info' style='position: absolute; top: 0px; width: 100%;font-family:arial; font-weight: bolder; padding-top: 5px; text-align:center;'>
-    No te pide acceso a la camara? Haz click aca:
-  	<a class='webcam' href='javascript:void();'>webcam</a>
-  </div>-->
-  <script>
-
-
-  var scene, camera, renderer;
-
-    init();
-    animate();
-    // Sets up the scene.
-  function init() {
-
-    // Create the scene and set the scene size.
-    scene = new THREE.Scene();
-    var WIDTH = window.innerWidth,
-        HEIGHT = window.innerHeight;
-        // Create a renderer and add it to the DOM.
-   renderer = new THREE.WebGLRenderer({antialias:true});
-   renderer.setSize(WIDTH, HEIGHT);
-   document.body.appendChild(renderer.domElement);
-   // Create a camera, zoom it out from the model a bit, and add it to the scene.
-   camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.1, 20000);
-   camera.position.set(0,6,0);
-   scene.add(camera);
-   // Create an event listener that resizes the renderer with the browser window.
-    window.addEventListener('resize', function() {
-      var WIDTH = window.innerWidth,
-          HEIGHT = window.innerHeight;
-      renderer.setSize(WIDTH, HEIGHT);
-      camera.aspect = WIDTH / HEIGHT;
-      camera.updateProjectionMatrix();
-    });
-    // Set the background color of the scene.
-    renderer.setClearColor(0x333F47, 1);
-
-    // Create a light, set its position, and add it to the scene.
-    var light = new THREE.PointLight(0xffffff);
-    light.position.set(-100,200,100);
-    scene.add(light);
-    // Load in the mesh and add it to the scene.
-   var loader = new THREE.JSONLoader();
-   loader.load( "images/mappache.json", function(geometry){
-     var material = new THREE.MeshLambertMaterial({color: 0x55B663});
-     mesh = new THREE.Mesh(geometry, material);
-     scene.add(mesh);
-   });
-   // Add OrbitControls so that we can pan around with the mouse.
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-  }
-  // Renders the scene and updates the render as needed.
-  function animate() {
-
-    // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-    requestAnimationFrame(animate);
-
-    // Render the scene.
+  function render() {
+    requestAnimationFrame(render);
+    //cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
     renderer.render(scene, camera);
-    controls.update();
-  }
-
+  };
+  render();
 </script>
 </body>
 </html>
