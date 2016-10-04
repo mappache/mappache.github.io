@@ -1,7 +1,10 @@
 <html>
 <head>
   <title>My first Three.js app</title>
-  <style>canvas { width: 100%; height: 100% }</style>
+  <style>
+      canvas { width: 100%; height: 100% }
+      body {overflow: hidden}
+  </style>
 </head>
 <body>
 <script src="js/three.min.js"></script>
@@ -9,28 +12,36 @@
 <script src='js/STLLoader.js'></script>
 <script src='js/OBJLoader.js'></script>
 <script>
+    var logo;
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
   var renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
   var geometry = new THREE.BoxGeometry(350, 350, 350, 10, 10, 10);
-  var material = new THREE.MeshBasicMaterial({color: 0xfffff, wireframe: true});
-  var cube = new THREE.Mesh(geometry, material);
-  /*var loader = new THREE.OBJLoader();
-  loader.load( 'images/mappache.obj', function ( geometry ) {
-      var material = new THREE.MeshLambertMaterial({color: 0x457371});
-      var logo = new THREE.Mesh( geometry, material);
+
+  var logo_cap_texture =
+          THREE.ImageUtils.loadTexture("images/mappache2.png");
+ // var material = new THREE.MeshLambertMaterial({map:logo_cap_texture});
+
+  var loader = new THREE.TextureLoader();
+  loader.load('images/mappache2.png', function ( texture ) {
+      var geometry = new THREE.CylinderGeometry(100,100,10,500);
+      var material = new THREE.MeshBasicMaterial({map: texture, overdraw: 0.5});
+      logo = new THREE.Mesh(geometry, material);
       scene.add(logo);
-  });*/
-  scene.add(cube);
+  });
+
+  //var material = new THREE.MeshBasicMaterial({color: 0xfffff, wireframe: true});
+  //var cube = new THREE.Mesh(geometry, material);
+  //scene.add(cube);
   camera.position.z = 1000;
   controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   function render() {
     requestAnimationFrame(render);
-    //cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    logo.rotation.x += 0.01;
+    logo.rotation.y += 0.01;
     renderer.render(scene, camera);
   };
   render();
