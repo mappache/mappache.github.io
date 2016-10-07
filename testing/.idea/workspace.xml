@@ -33,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-476">
@@ -43,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pruebainterna.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pruebainterna.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projects/pruebainterna.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
+            <state relative-caret-position="187">
               <caret line="158" column="59" selection-start-line="158" selection-start-column="59" selection-end-line="158" selection-end-column="59" />
               <folding />
             </state>
@@ -182,12 +182,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475537728565</updated>
-      <workItem from="1475537733929" duration="19496000" />
+      <workItem from="1475537733929" duration="19613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19496000" />
+    <option name="totallyTimeSpent" value="19613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -267,14 +267,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/pruebainterna.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="158" column="59" selection-start-line="158" selection-start-column="59" selection-end-line="158" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projects/logoSinAR.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -287,6 +279,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-476">
           <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/pruebainterna.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="158" column="59" selection-start-line="158" selection-start-column="59" selection-end-line="158" selection-end-column="59" />
           <folding />
         </state>
       </provider>
