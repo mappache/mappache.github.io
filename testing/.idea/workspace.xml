@@ -24,40 +24,20 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="logoSinAR.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/examples/logoSinAR.html">
+        <entry file="file://$PROJECT_DIR$/projects/logoSinAR.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+            <state relative-caret-position="1006">
+              <caret line="106" column="7" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="pruebainterna.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/pruebainterna.html">
+        <entry file="file://$PROJECT_DIR$/projects/pruebainterna.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="46" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logoAR.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/logoAR.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1159">
-              <caret line="144" column="14" selection-start-line="144" selection-start-column="14" selection-end-line="144" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prueba.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/prueba.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="177" column="29" selection-start-line="177" selection-start-column="29" selection-end-line="177" selection-end-column="29" />
+            <state relative-caret-position="-14">
+              <caret line="154" column="7" selection-start-line="116" selection-start-column="3" selection-end-line="154" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -69,8 +49,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/examples/prueba.html" />
-        <option value="$PROJECT_DIR$/examples/pruebainterna.html" />
         <option value="$PROJECT_DIR$/examples/logoSinAR.html" />
+        <option value="$PROJECT_DIR$/examples/pruebainterna.html" />
+        <option value="$PROJECT_DIR$/projects/pruebainterna.html" />
+        <option value="$PROJECT_DIR$/projects/logoSinAR.html" />
       </list>
     </option>
   </component>
@@ -154,6 +136,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e70010ee-22e6-4f9a-a02d-94b95927d742" name="Default" comment="" />
@@ -161,12 +146,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475537728565</updated>
-      <workItem from="1475537733929" duration="10390000" />
+      <workItem from="1475537733929" duration="16579000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10390000" />
+    <option name="totallyTimeSpent" value="16579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -214,6 +199,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/examples/pruebainterna.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/logoSinAR.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/logoAR.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1159">
@@ -222,18 +223,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/pruebainterna.html">
+    <entry file="file://$PROJECT_DIR$/projects/pruebainterna.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="46" selection-end-column="11" />
+        <state relative-caret-position="-14">
+          <caret line="154" column="7" selection-start-line="116" selection-start-column="3" selection-end-line="154" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/logoSinAR.html">
+    <entry file="file://$PROJECT_DIR$/projects/logoSinAR.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+        <state relative-caret-position="1006">
+          <caret line="106" column="7" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
           <folding />
         </state>
       </provider>

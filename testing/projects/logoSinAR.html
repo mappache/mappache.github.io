@@ -63,10 +63,57 @@
     //render();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////// PARTE TOUCH //////////////////////////////////
+    //////////////////////////////////////////////////
+
+    var isTouching = false;
+    var previousHandPosition = {
+        x: 0,
+        y: 0
+    };
+    $(renderer.domElement).on('touchstart', function(e) {
+        isTouching = true;
+    })
+            .on('touchmove', function(e) {
+                //console.log(e);
+                var deltaMove = {
+                    x: e.offsetX-previousMousePosition.x,
+                    y: e.offsetY-previousMousePosition.y
+                };
+
+                if(isTouching) {
+
+                    var deltaRotationQuaternion = new THREE.Quaternion()
+                            .setFromEuler(new THREE.Euler(
+                                    toRadians(deltaMove.y * 1),
+                                    toRadians(deltaMove.x * 1),
+                                    0,
+                                    'XYZ'
+                            ));
+
+                    logo.quaternion.multiplyQuaternions(deltaRotationQuaternion, logo.quaternion);
+                }
+
+                previousHandPosition = {
+                    x: e.offsetX,
+                    y: e.offsetY
+                };
+            });
+    /* */
+
+
+    $(document).on('touchend', function(e) {
+        isTouching = false;
+    });
 
 
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    /////////// PARTE DE WEB - MOUSE DRAGGING //////////////////////////////////////////////
+    ////////////////////////////////////////////////
     var isDragging = false;
     var previousMousePosition = {
         x: 0,
