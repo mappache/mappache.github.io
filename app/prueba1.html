@@ -49,12 +49,12 @@
                     {
                         capabilities: ['webgl','gum'],
                         files: [
-                            [ '../../js/awe-standard-dependencies.js'+d, '../../js/awe-standard.js'+d ], // core dependencies for this app
-                            ['../../js/plugins/StereoEffect.js'+d, '../../js/plugins/VREffect.js'+d], // dependencies for render effects
-                            '../../js/plugins/awe.rendering_effects.js'+d,
-                            '../../js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
-                            'awe.gyro.js'+d, // basic gyro handling
-                            'awe.mouse.js'+d, // basic mouse handling
+                            [ '../../aweJS/js/awe-standard-dependencies.js'+d, '../../aweJS/js/awe-standard.js'+d ], // core dependencies for this app
+                            ['../../aweJS/js/plugins/StereoEffect.js'+d, '../../aweJS/js/plugins/VREffect.js'+d], // dependencies for render effects
+                            '../../aweJS/js/plugins/awe.rendering_effects.js'+d,
+                            '../../aweJS/js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
+                            '../../aweJS/examples/basic/awe.gyro.js'+d, // basic gyro handling
+                            '../../aweJS/examples/basic/awe.mouse.js'+d, // basic mouse handling
                         ],
                         success: function() {
                             // setup and paint the scene
