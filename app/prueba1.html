@@ -25,31 +25,36 @@
 <script type="text/javascript" src="../../aweJS/js/awe-loader.js"></script>
 <script>
     window.addEventListener('load', function() {
+        // initialize awe after page loads
         window.awe.init({
+            // automatically detect the device type
             device_type: awe.AUTO_DETECT_DEVICE_TYPE,
+            // populate some default settings
             settings: {
                 container_id: 'container',
                 fps: 30,
                 default_camera_position: { x:0, y:0, z:0 },
-                default_lights: [{
-                    id: 'point_light',
-                    type: 'point',
-                    color: 0xFFFFFF
-                }]
+                default_lights:[
+                    {
+                        id: 'hemisphere_light',
+                        type: 'hemisphere',
+                        color: 0xCCCCCC
+                    },
+                ],
             },
             ready: function() {
                 var d = '?_='+Date.now();
-
+                // load js files based on capability detection then setup the scene if successful
                 awe.util.require([
                     {
-                        capabilities: ['gum','webgl'],
+                        capabilities: ['webgl','gum'],
                         files: [
-                            [ '../../aweJS/js/awe-standard-dependencies.js'+d, '../../aweJS/js/awe-standard.js'+d ], // core dependencies for this app
-                            ['../../aweJS/js/plugins/StereoEffect.js'+d, '../../aweJS/js/plugins/VREffect.js'+d], // dependencies for render effects
-                            '../../aweJS/js/plugins/awe.rendering_effects.js'+d,
-                            '../../aweJS/js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
-                            '../../aweJS/examples/basic/awe.gyro.js'+d, // basic gyro handling
-                            '../../aweJS/examples/basic/awe.mouse.js'+d, // basic mouse handling
+                            [ '../../js/awe-standard-dependencies.js'+d, '../../js/awe-standard.js'+d ], // core dependencies for this app
+                            ['../../js/plugins/StereoEffect.js'+d, '../../js/plugins/VREffect.js'+d], // dependencies for render effects
+                            '../../js/plugins/awe.rendering_effects.js'+d,
+                            '../../js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
+                            'awe.gyro.js'+d, // basic gyro handling
+                            'awe.mouse.js'+d, // basic mouse handling
                         ],
                         success: function() {
                             // setup and paint the scene
