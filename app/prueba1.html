@@ -120,32 +120,24 @@
                             awe.projections.add({
                                 id:'ne',
                                 geometry:{ path: 'mappache.obj' },
-                                material:{
-                                    type: 'lambert',
-                                    color:0x008B8B,
-                                },
-                                visible:true,
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+                                texture: {path: 'Farmhouse.jpg'},
                             }, { poi_id: 'north_east' });
 
                             awe.projections.add({
                                 id:'e',
                                 geometry:{ shape:'circle', radius:30, segments:110 },
                                 rotation:{ x:30, y:30, z:0 },
-                                /*material:{
-                                 type: 'phong',
-                                 color:0x00FF00,
-                                 },*/
                                 texture:{ path: 'mappache2.png' },
                             }, { poi_id: 'east' });
 
                             awe.projections.add({
                                 id:'se',
                                 geometry:{ path: 'petronas_obj/petronas.obj' },
-                                /*material:{
-                                 type: 'phong',
-                                 color:0xCCCCCC,
-                                 },*/
-                                visible:true,
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+                                texture: {path: 'Farmhouse.jpg'},
                             }, { poi_id: 'south_east' });
 
                             awe.projections.add({
