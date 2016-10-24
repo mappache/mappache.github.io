@@ -160,11 +160,11 @@
 
                             awe.projections.add({
                                 id:'sw',
-                                geometry:{ shape:'sphere', radius:10 },
-                                material:{
-                                    type: 'phong',
-                                    color:0xCCCCCC,
-                                },
+                                scale: {x:5, y:5, z:5},
+								geometry: { path: 'Farmhouse.obj' },
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+                                texture: {path: 'Farmhouse.jpg'},
                             }, { poi_id: 'south_west' });
 
                             awe.projections.add({
