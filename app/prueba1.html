@@ -171,11 +171,11 @@
 
                             awe.projections.add({
                                 id:'nw',
-                                geometry:{ shape:'sphere', radius:10 },
-                                material:{
-                                    type: 'phong',
-                                    color:0xCCCCCC,
-                                },
+                                scale: {x:5, y:5, z:5},
+								geometry: { path: 'Fan.obj' },
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+                                texture: {path: 'Fan_Col.png'},
                             }, { poi_id: 'north_west' });
 
                         },
