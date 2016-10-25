@@ -95,6 +95,10 @@
                                     where:{ id:e.detail.projection_id }
                                 });
                             }, false);
+                            window.addEventListener('object_drag', function(e) { //agregando touch!
+                              var p = awe.projections.view(e.detail.projection_id);
+                              awe.projections.update(/*lalalalalalalalalala*/)
+                            });
 
                             // add some points of interest (poi) for each of the compass points
                             awe.pois.add({ id:'north', position: { x:0, y:0, z:200 } });
@@ -120,61 +124,59 @@
                             awe.projections.add({
                                 id:'ne',
                                 scale: {x:10,y:10,z:10},
-                                geometry:{ path: 'mappache.obj' },
+                                geometry:{ path: 'OBJ/mappache.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                texture: {path: 'Farmhouse.jpg'},
+                                texture: {path: 'textures/mappache2.png'},
                             }, { poi_id: 'north_east' });
 
                             awe.projections.add({
                                 id:'e',
                                 geometry:{ shape:'circle', radius:30, segments:110 },
-                                rotation:{ x:30, y:30, z:0 },
-                                texture:{ path: 'mappache2.png' },
+                                rotation:{ x:0, y:0, z:0 },
+                                texture:{ path: 'textures/mappache2.png' },
                             }, { poi_id: 'east' });
 
                             awe.projections.add({
                                 id:'se',
-                                geometry:{ path: 'petronas.obj' },
+                                geometry:{ path: 'OBJ/petronas.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                //texture: {path: 'Farmhouse.jpg'},
+                                texture: {path: 'textures/Farmhouse.jpg'},
                             }, { poi_id: 'south_east' });
 
                             awe.projections.add({
                                 id:'s',
-                                geometry:{ path: 'Harley.obj'},
+                                geometry:{ path: 'OBJ/Harley.obj'},
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                texture: {path: 'Render.png'},
+                                texture: {path: 'textures/Farmhouse.jpg'},
                             }, { poi_id: 'south' });
 
                             awe.projections.add({
                                 id:'sw',
                                 scale: {x:5, y:5, z:5},
-								geometry: { path: 'Farmhouse.obj' },
+								geometry: { path: 'OBJ/Farmhouse.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                texture: {path: 'Farmhouse.jpg'},
+                                texture: {path: 'textures/Farmhouse.jpg'},
                             }, { poi_id: 'south_west' });
 
                             awe.projections.add({
                                 id:'w',
-                                geometry:{ shape:'cube', x:50, y:50, z:50 },
+                                geometry:{ path: 'OBJ/Saturn.max' },
                                 rotation:{ x:30, y:30, z:0 },
-                                material:{
-                                    type: 'phong',
-                                    color:0x0000FF,
+                                texture: {path: 'textures/Farmhouse.jpg'}
                                 },
                             }, { poi_id: 'west' });
 
                             awe.projections.add({
                                 id:'nw',
                                 scale: {x:50, y:50, z:50},
-								geometry: { path: 'Fan.obj' },
+								geometry: { path: 'OBJ/Fan.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                texture: {path: 'Fan_Col.png'},
+                                texture: {path: 'textures/Fan_Col.png'},
                             }, { poi_id: 'north_west' });
 
                         },
