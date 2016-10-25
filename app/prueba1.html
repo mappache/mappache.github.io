@@ -82,7 +82,7 @@
                                 render_effects_plugin.enable();
                             }
 
-                            // setup some code to handle when an object is clicked/tapped
+                            /*/ setup some code to handle when an object is clicked/tapped
                             window.addEventListener('object_clicked', function(e) {
                                 var p = awe.projections.view(e.detail.projection_id);
                                 awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
@@ -96,17 +96,17 @@
                                 });
                             }, false);//*/
 
-                            /*/touching 2.0 MUCHO MAS CORTA - no anda.******
+                            //touching 2.0 MUCHO MAS CORTA - no anda.******
                             var fingering;
                             var previousMousePosition = {
                               x: 0,
                               y: 0
                             };
-                            window.addEventListener('touchstart', function(e) {
+                            window.addEventListener('mousedown', function(e) {
                               var fingering = true;
                               var p = awe.projections.view(e.detail.projection_id)
                             });
-                            window.addEventListener('touchmove', function(e) {
+                            window.addEventListener('mousedrag', function(e) {
                               var deltaMove = {
                                 x: e.offsetX-previousMousePosition.x,
                                 y: e.offsetY-previousMousePosition.y
@@ -126,7 +126,7 @@
                                 y: e.offsetY
                               };
                             });
-                            window.addEventListener('touchend',function(e) {
+                            window.addEventListener('mouseup',function(e) {
                               fingering = false;
                             });//*/
 
