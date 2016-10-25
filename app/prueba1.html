@@ -61,7 +61,7 @@
                         success: function() {
                             // setup and paint the scene
                             awe.setup_scene();
-                            // HAY QUE REGISTRAR ALGUN PLUGIN PARA EL TOUCH
+                            // HAY QUE REGISTRAR ALGUN PLUGIN PARA EL TOUCH*****
                             var click_plugin = awe.plugins.view('object_clicked');
                             if (click_plugin) {
                                 click_plugin.register();
@@ -82,7 +82,7 @@
                                 render_effects_plugin.enable();
                             }
 
-                            /*/ setup some code to handle when an object is clicked/tapped
+                            // setup some code to handle when an object is clicked/tapped
                             window.addEventListener('object_clicked', function(e) {
                                 var p = awe.projections.view(e.detail.projection_id);
                                 awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
@@ -96,7 +96,7 @@
                                 });
                             }, false);//*/
 
-                            //touching 2.0 MUCHO MAS CORTA
+                            /*/touching 2.0 MUCHO MAS CORTA - no anda.******
                             var fingering;
                             var previousMousePosition = {
                               x: 0,
@@ -145,7 +145,7 @@
                             // add projections to each of the pois
                             awe.projections.add({
                                 id:'n',
-                                scale: {x:1,y:1,z:1},
+                                scale: {x:15,y:15,z:15},
                                 geometry:{ path:'OBJ/light-cruiser-tenryuu.obj' },
                                 rotation: { x:0, y:90, z:0 },
                                 position: { x:0, y:0, z:0 }
@@ -164,7 +164,6 @@
                                 id:'e',
                                 geometry:{ shape:'circle', radius:30, segments:110 },
                                 rotation: { x:0, y:0, z:0 },
-
                                 texture:{ path: 'textures/mappache2.png' },
                             }, { poi_id: 'east' });
 
@@ -179,7 +178,7 @@
 
                             awe.projections.add({
                                 id:'s',
-                                scale: {x:3,y:3,z:3},
+                                scale: {x:1,y:1,z:1},
                                 geometry:{ path: 'OBJ/Harley.obj'},
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
@@ -206,7 +205,7 @@
 
                             awe.projections.add({
                                 id:'nw',
-                                scale: {x:10, y:10, z:10},
+                                scale: {x:15, y:15, z:15},
 				                        geometry: { path: 'OBJ/Barbarian_Female.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:180, z:0 },
