@@ -95,10 +95,10 @@
                                     where:{ id:e.detail.projection_id }
                                 });
                             }, false);
-                            window.addEventListener('object_drag', function(e) { //agregando touch!
+                            /*window.addEventListener('object_drag', function(e) { //agregando touch!
                               var p = awe.projections.view(e.detail.projection_id);
-                              awe.projections.update(/*lalalalalalalalalala*/)
-                            });
+                              awe.projections.update(lalalalalalalalalala)
+                            });*/
 
                             // add some points of interest (poi) for each of the compass points
                             awe.pois.add({ id:'north', position: { x:0, y:0, z:200 } });
@@ -113,12 +113,11 @@
                             // add projections to each of the pois
                             awe.projections.add({
                                 id:'n',
-                                geometry:{ shape:'cylinder', radiusTop:30,radiusBottom:30,height:2,radiusSegments:110,heightSegments:100 },
-                                rotation:{ x:30, y:30, z:0 },
-                                material:{
-                                    type: 'phong',
-                                    color:0x008B8B,
-                                },
+                                geometry:{ path:'OBJ/Sonic.obj' },
+                                rotation: { x:30, y:30, z:0 },
+                                position: { x:0, y:0, z:0 }
+                                material: {path: 'textures/sonic/Sonic.mtl'}
+                                texture: {path: 'textures/Fan_Col.png'}
                             }, { poi_id: 'north' });
 
                             awe.projections.add({
@@ -164,7 +163,7 @@
 
                             awe.projections.add({
                                 id:'w',
-                                geometry:{ path: 'OBJ/Saturn.max' },
+                                geometry:{ path: 'OBJ/sanic.obj' },
                                 rotation:{ x:30, y:30, z:0 },
                                 texture: {path: 'textures/Farmhouse.jpg'}
                                 },
