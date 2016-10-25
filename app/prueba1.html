@@ -61,7 +61,7 @@
                         success: function() {
                             // setup and paint the scene
                             awe.setup_scene();
-
+                            // HAY QUE REGISTRAR ALGUN PLUGIN PARA EL TOUCH
                             var click_plugin = awe.plugins.view('object_clicked');
                             if (click_plugin) {
                                 click_plugin.register();
@@ -146,10 +146,10 @@
                             awe.projections.add({
                                 id:'n',
                                 scale: {x:1,y:1,z:1},
-                                geometry:{ path:'OBJ/Sonic.obj' },
+                                geometry:{ path:'OBJ/light-cruiser-tenryuu.obj' },
                                 rotation: { x:0, y:90, z:0 },
                                 position: { x:0, y:0, z:0 }
-                            }, { poi_id: 'north' });
+                            }, { poi_id: 'north' }); //*/
 
                             awe.projections.add({
                                 id:'ne',
@@ -170,8 +170,8 @@
 
                             awe.projections.add({
                                 id:'se',
-                                scale: { x:5, y:5, z:5 }
-                                geometry:{ path: 'OBJ/XY_PikachuF.obj' },
+                                //scale: { x:5, y:5, z:5 }
+                                geometry:{ path: 'OBJ/XY_PikachuF.obj' }, //pikachu no acepta scale. impide que cargue todo.
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
 
