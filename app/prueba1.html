@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AWE GEO AR demo</title>
+    <title>MappacheTest</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta charset="utf-8"/>
     <style type="text/css">
@@ -116,7 +116,7 @@
                                 geometry:{ path:'OBJ/Sonic.obj' },
                                 rotation: { x:30, y:30, z:0 },
                                 position: { x:0, y:0, z:0 }
-                                material: {path: 'textures/sonic/Sonic.mtl'}
+                                //material: {path: 'textures/sonic/Sonic.mtl'}
                                 texture: {path: 'textures/Fan_Col.png'}
                             }, { poi_id: 'north' });
 
@@ -155,7 +155,7 @@
                             awe.projections.add({
                                 id:'sw',
                                 scale: {x:5, y:5, z:5},
-								geometry: { path: 'OBJ/Farmhouse.obj' },
+				                        geometry: { path: 'OBJ/Farmhouse.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
                                 texture: {path: 'textures/Farmhouse.jpg'},
@@ -172,7 +172,7 @@
                             awe.projections.add({
                                 id:'nw',
                                 scale: {x:50, y:50, z:50},
-								geometry: { path: 'OBJ/Fan.obj' },
+				                        geometry: { path: 'OBJ/Fan.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
                                 texture: {path: 'textures/Fan_Col.png'},
