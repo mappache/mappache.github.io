@@ -94,9 +94,9 @@
                                     },
                                     where:{ id:e.detail.projection_id }
                                 });
-                            }, false); */
+                            }, false);//*/
 
-                            //le touching begins
+                            //touching 2.0 MUCHO MAS CORTA
                             var fingering;
                             var previousMousePosition = {
                               x: 0,
@@ -104,35 +104,32 @@
                             };
                             window.addEventListener('touchstart', function(e) {
                               var fingering = true;
+                              var p = awe.projections.view(e.detail.projection_id)
                             });
-                            .addEventListener('touchmove', function(e) {//usando lo que yo hice para el objeto 3D viejo
-                                var deltaMove = {
+                            window.addEventListener('touchmove', function(e) {
+                              var deltaMove = {
                                 x: e.offsetX-previousMousePosition.x,
                                 y: e.offsetY-previousMousePosition.y
-                            };
-                            var p = awe.projections.view(e.detail.projection_id);//aca o en touchstart.
+                              };
+                              if(fingering){
+                                awe.projections.update({
+                                  data:{
+                                    rotation:{
+                                      y: p.rotation.deltaMove.y,
+                                      x: p.rotation.deltaMove.x //sera que funca?
+                                    },
+                                    where:{ id:e.detail.projection_id } }
+                                });
+                              }//lave del if
+                              previousMousePosition = {
+                                x: e.offsetX,
+                                y: e.offsetY
+                              };
+                            });
+                            window.addEventListener('touchend',function(e) {
+                              fingering = false;
+                            });//*/
 
-                            if(fingering) {
-
-                              var deltaRotationQuaternion = new three.Quaternion()
-                              .setFromEuler(new three.Euler(
-                                toRadians(deltaMove.y * 1),
-                                toRadians(deltaMove.x * 1),
-                                0,
-                                'XYZ'
-                              ));
-
-                              p.quaternion.multiplyQuaternions(deltaRotationQuaternion, p.quaternion);
-                            }
-
-                            previousMousePosition = {
-                              x: e.offsetX,
-                              y: e.offsetY
-                            };
-                          });
-                          .addEventListener('touchend',function(e) {
-                            fingering = false;
-                          });
 
 
                             // add some points of interest (poi) for each of the compass points
@@ -166,7 +163,8 @@
                             awe.projections.add({
                                 id:'e',
                                 geometry:{ shape:'circle', radius:30, segments:110 },
-                                rotation:{ x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+
                                 texture:{ path: 'textures/mappache2.png' },
                             }, { poi_id: 'east' });
 
@@ -175,7 +173,7 @@
                                 geometry:{ path: 'OBJ/XY_PikachuF.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                //texture: {path: 'textures/XY_PikachuF.png'},
+
                             }, { poi_id: 'south_east' });
 
                             awe.projections.add({
