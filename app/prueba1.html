@@ -119,6 +119,7 @@
 
                             awe.projections.add({
                                 id:'ne',
+                                scale: {x:50,y:50,z:50},
                                 geometry:{ path: 'mappache.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
@@ -137,17 +138,15 @@
                                 geometry:{ path: 'petronas_obj/petronas.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                texture: {path: 'Farmhouse.jpg'},
+                                //texture: {path: 'Farmhouse.jpg'},
                             }, { poi_id: 'south_east' });
 
                             awe.projections.add({
                                 id:'s',
-                                geometry:{ shape:'torus', radius:10, tube:3, radialSegments:100, tubularSegments:100, arc: 6 },
-                                rotation:{ x:30, y:30, z:0 },
-                                material:{
-                                    type: 'phong',
-                                    color:0x008B8B,
-                                },
+                                geometry:{ path: 'Harley.obj'},
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+                                texture: {path: 'Render.png'},
                             }, { poi_id: 'south' });
 
                             awe.projections.add({
@@ -171,7 +170,7 @@
 
                             awe.projections.add({
                                 id:'nw',
-                                scale: {x:500, y:500, z:500},
+                                scale: {x:50, y:50, z:50},
 								geometry: { path: 'Fan.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
