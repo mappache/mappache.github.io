@@ -82,7 +82,7 @@
                                 render_effects_plugin.enable();
                             }
 
-                            // setup some code to handle when an object is clicked/tapped
+                            /*/ setup some code to handle when an object is clicked/tapped
                             window.addEventListener('object_clicked', function(e) {
                                 var p = awe.projections.view(e.detail.projection_id);
                                 awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
@@ -94,11 +94,46 @@
                                     },
                                     where:{ id:e.detail.projection_id }
                                 });
-                            }, false);
-                            /*window.addEventListener('object_drag', function(e) { //agregando touch!
-                              var p = awe.projections.view(e.detail.projection_id);
-                              awe.projections.update(lalalalalalalalalala)
-                            });*/
+                            }, false); */
+
+                            //le touching begins
+                            var fingering;
+                            var previousMousePosition = {
+                              x: 0,
+                              y: 0
+                            };
+                            window.addEventListener('touchstart', function(e) {
+                              var fingering = true;
+                            });
+                            .addEventListener('touchmove', function(e) {//usando lo que yo hice para el objeto 3D viejo
+                                var deltaMove = {
+                                x: e.offsetX-previousMousePosition.x,
+                                y: e.offsetY-previousMousePosition.y
+                            };
+                            var p = awe.projections.view(e.detail.projection_id);//aca o en touchstart.
+
+                            if(fingering) {
+
+                              var deltaRotationQuaternion = new three.Quaternion()
+                              .setFromEuler(new three.Euler(
+                                toRadians(deltaMove.y * 1),
+                                toRadians(deltaMove.x * 1),
+                                0,
+                                'XYZ'
+                              ));
+
+                              p.quaternion.multiplyQuaternions(deltaRotationQuaternion, p.quaternion);
+                            }
+
+                            previousMousePosition = {
+                              x: e.offsetX,
+                              y: e.offsetY
+                            };
+                          });
+                          .addEventListener('touchend',function(e) {
+                            fingering = false;
+                          });
+
 
                             // add some points of interest (poi) for each of the compass points
                             awe.pois.add({ id:'north', position: { x:0, y:0, z:200 } });
