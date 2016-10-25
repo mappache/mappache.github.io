@@ -90,7 +90,7 @@
                                         animation: {
                                             duration: 10,
                                         },
-                                        rotation:{ y: p.rotation.y+180, x: p.rotation.x+180 }
+                                        rotation:{ y: p.rotation.y+180}//, x: p.rotation.x+180 }
                                     },
                                     where:{ id:e.detail.projection_id }
                                 });
@@ -113,8 +113,9 @@
                             // add projections to each of the pois
                             awe.projections.add({
                                 id:'n',
+                                scale: {x:10,y:10,z:10},
                                 geometry:{ path:'OBJ/Sonic.obj' },
-                                rotation: { x:30, y:30, z:0 },
+                                rotation: { x:0, y:0, z:0 },
                                 position: { x:0, y:0, z:0 }
                             }, { poi_id: 'north' });
 
@@ -122,7 +123,7 @@
                                 id:'ne',
                                 scale: {x:10,y:10,z:10},
                                 geometry:{ path: 'OBJ/mappache.obj' },
-                                position: { x:0, y:0, z:0 },
+                                position: { x:10, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
                                 texture: {path: 'textures/mappache2.png'},
                             }, { poi_id: 'north_east' });
@@ -136,14 +137,16 @@
 
                             awe.projections.add({
                                 id:'se',
-                                geometry:{ path: 'OBJ/petronas.obj' },
+                                geometry:{ path: 'OBJ/SuperSonic_Modern.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
-                                texture: {path: 'textures/Farmhouse.jpg'},
+                                //material: {path: 'textures/SuperSonic_Modern.mtl'}
+                                texture: {path: 'textures/chr_supersonic_body01_dif_HD.png'},
                             }, { poi_id: 'south_east' });
 
                             awe.projections.add({
                                 id:'s',
+                                scale: {x:10,y:10,z:10},
                                 geometry:{ path: 'OBJ/Harley.obj'},
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
@@ -159,12 +162,14 @@
                                 texture: {path: 'textures/Farmhouse.jpg'},
                             }, { poi_id: 'south_west' });
 
-                          /*  awe.projections.add({
+                            awe.projections.add({
                                 id:'w',
-                                geometry:{ path: 'OBJ/sanic.OBJ' },
-                                rotation:{ x:30, y:30, z:0 },
-                                },
-                            }, { poi_id: 'west' }); */
+                                scale: {x:10,y:10,z:10},
+                                geometry:{ path: 'OBJ/Po.obj'},
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:0, y:0, z:0 },
+                                texture: {path: 'textures/Po.png'},
+                            }, { poi_id: 'west' });
 
                             awe.projections.add({
                                 id:'nw',
