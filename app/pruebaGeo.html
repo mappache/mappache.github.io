@@ -1,0 +1,151 @@
+<html>
+ <head>
+	 <title>MappacheMonGo</title>
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+   <meta charset="utf-8"/>
+   <style type="text/css">
+       * {
+           margin: 0;
+           padding: 0;
+       }
+       #container {
+           position: absolute;
+           left: 0;
+           top: 0;
+           bottom: 0;
+           right: 0;
+           overflow: hidden;
+       }
+   </style>
+	 <button id="boton" type="button" onclick="getLocation()">Click Me!</button>
+	 <script type='text/javascript'>
+   //version max de buscar geoLocalizacion
+   var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function tenesGPS(pos) {
+  var crd = pos.coords; //crd.latitude; crd.longitude; crd.accuracy
+};
+
+function error(err) {
+  alert('ERROR(' + err.code + '): ' + err.message);
+};
+
+navigator.geolocation.getCurrentPosition(tenesGPS, error, options); //tenemos tu GPS
+	 </script>
+
+ </head>
+ <body>
+   <div id="container"></div>
+   <script type="text/javascript" src="../js/awe-v8.js"></script>
+   <script type="text/javascript" src="../js/awe-loader.js"></script>
+   <script type="text/javascript">
+       window.addEventListener('load', function() {
+           // initialize awe after page loads
+           window.awe.init({
+               // automatically detect the device type
+               device_type: awe.AUTO_DETECT_DEVICE_TYPE,
+               // populate some default settings
+               settings: {
+                   container_id: 'container',
+                   fps: 30,
+                   default_camera_position: { x:0, y:0, z:0 },
+                   default_lights:[
+                       {
+                           id: 'hemisphere_light',
+                           type: 'hemisphere',
+                           color: 0xCCCCCC
+                       },
+                   ],
+               },
+               ready: function() {
+                   var d = '?_='+Date.now();
+
+                   // load js files based on capability detection then setup the scene if successful
+                   awe.util.require([
+                       {
+                           capabilities: ['webgl','gum'],
+                           files: [
+                               [ '../js/awe-standard-dependencies.js'+d, '../js/awe-standard.js'+d ], // core dependencies for this app
+                               ['../js/plugins/StereoEffect.js'+d, '../js/plugins/VREffect.js'+d], // dependencies for render effects
+                               '../js/plugins/awe.rendering_effects.js'+d, '../marker_ar/awe.marker_ar.js'+d,
+                               '../marker_ar/awe-jsartoolkit-dependencies.js',
+                               '../js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
+                               'awe.gyro.js'+d, // basic gyro handling
+                               'awe.mouse.js'+d, // basic mouse handling
+                           ],
+                           success: function() {
+                               // setup and paint the scene
+                               awe.setup_scene();
+
+                               var click_plugin = awe.plugins.view('object_clicked');
+                               if (click_plugin) {
+                                   click_plugin.register();
+                                   click_plugin.enable();
+                               }
+                               var gyro_plugin = awe.plugins.view('gyro');
+                               if (gyro_plugin) {
+                                   gyro_plugin.enable();
+                               }
+                               var mouse_plugin = awe.plugins.view('gyro');
+                               if (gyro_plugin) {
+                                   gyro_plugin.enable();
+                               }
+
+                               awe.settings.update({data:{value: 'ar'}, where:{id: 'view_mode'}})
+                               var render_effects_plugin = awe.plugins.view('render_effects');
+                               if (render_effects_plugin) {
+                                   render_effects_plugin.enable();
+                               }
+
+                               // setup some code to handle when an object is clicked/tapped
+                               window.addEventListener('object_clicked', function(e) {
+                                   var p = awe.projections.view(e.detail.projection_id);
+                                   awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
+                                       data:{
+                                           animation: {
+                                               duration: 10,
+                                           },
+                                           rotation:{ y: p.rotation.y+180, x: p.rotation.x+180 }
+                                       },
+                                       where:{ id:e.detail.projection_id }
+                                   });
+                               }, false);//*/
+                               //var touchzone = document.getElementById("w"); interesante para ver si anda touch
+                          		 //touchzone.addEventListener("touchstart", draw, false);
+
+
+                               awe.pois.add({ id:'west', position: { x:-200, y:0, z:0 } });
+                               //acá es donde hay que pensar bien
+                               //usando el POIs este, puedo poner a Po el panda en donde quiero, fijo.
+                               if(-34.5717386-0.001 <= crd.latitude <= -34.5717386+0.001 //3casaDec afecta en 0.1km
+                                 && -58.4488615-0.001 <= crd.longitude <= -58.4488615+0.001 ){//si estoy en rango, agrego la projection
+                                 awe.projections.add({
+                                    id:'w',
+                                    scale: {x:50,y:50,z:50},
+                                    geometry: { path:'OBJ/Po.obj' },
+                                    rotation: { x:0, y:90, z:0 },
+                                    position: { x:0, y:0, z:0 }
+                                    texture: { path: 'textures/Po.png' }
+                                  }, { poi_id: 'west' });
+                                },//llave del if
+                              },
+                          },
+                          { // else create a fallback
+                              capabilities: [],
+                              files: [],
+                              success: function() {
+                                  document.body.innerHTML = '<p>This demo currently requires a standards compliant mobile browser.';
+                                  return;
+                              },
+                          },
+                      ]);
+                  }
+              });
+          });
+</script>
+</body>
+</html>
