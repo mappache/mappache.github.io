@@ -65,24 +65,24 @@
                             // plugin dependencies
                             ['awe-jsartoolkit-dependencies.js','../js/plugins/StereoEffect.js', '../js/plugins/VREffect.js'],
                             //soy cheto
-                            //'../js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
+                            '../js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
                             // plugins
                             ['awe.marker_ar.js'+d,'../js/plugins/awe.rendering_effects.js'+d],
-                            //'awe.gyro.js'+d, // basic gyro handling
-                            //'awe.mouse.js'+d, // basic mouse handling
+                            'awe.gyro.js'+d, // basic gyro handling
+                            'awe.mouse.js'+d, // basic mouse handling
                         ],
                         success: function() {
                             awe.setup_scene();
 
                             awe.settings.update({data:{value: 'ar'}, where:{id: 'view_mode'}})
-                            /*/
+                            // a ver si anda clickeo
                             var click_plugin = awe.plugins.view('object_clicked');
                             if (click_plugin) {
                                 click_plugin.register();
                                 click_plugin.enable();
                             }//*/
 
-                            /*/ cliqueo interactua
+                            // cliqueo interactua
                             window.addEventListener('object_clicked', function(e) {
                                 var p = awe.projections.view(e.detail.projection_id);
                                 awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
@@ -110,7 +110,7 @@
                                 scale: {x:50,y:50,z:50},
                                 geometry: { path: 'OBJ/Po.obj' },
                                 position: { x:0, y:0, z:0 },
-                                rotation: { x:90, y:90, z:90 },
+                                rotation: { x:0, y:90, z:190 },
                                 texture: { path: 'textures/Po.png' },
                                 visible: false,
                             }, { poi_id: 'jsartoolkit_marker_64' });
