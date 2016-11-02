@@ -96,6 +96,7 @@
                                 });
                             }, false);//*/
 
+
                             /*/touching 2.0 MUCHO MAS CORTA - no anda.******
                             var fingering;
                             var previousMousePosition = {
@@ -153,11 +154,18 @@
 
                             awe.projections.add({
                                 id:'ne',
-                                scale: {x:10,y:10,z:10},
+                                scale: {x:30,y:30,z:30},
                                 geometry:{ path: 'OBJ/prueba01.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:45, z:0 },
-                                material: { path: 'textures/prueba01.mtl' }
+                                material: { path: 'textures/prueba01.mtl' },
+                                update: {
+                                  data:{
+                                      animation: {
+                                          duration: 10,
+                                      },
+                                      rotation:{ y: rotation.y+180, x: rotation.x+180 }
+                                }
                                 //texture: { path: 'textures/prueba01.mtl' },
                             }, { poi_id: 'north_east' });
 
@@ -169,7 +177,7 @@
                                  type: 'phong'
                                  //color:0x00FF00,
                               },
-                              texture: {path: 'prueba_01.mp4'},
+                              texture: {path: 'prueba01.wmv'},
                            }, { poi_id: 'east' });
 
                             awe.projections.add({
