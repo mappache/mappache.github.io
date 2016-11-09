@@ -30,40 +30,17 @@
 
   var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
   var renderer, loader, loaderOBJ, camera, scene, pointLight, ambientLight;
-  var container, controls;
+  var container, controls, mixer;
   var sphere, sphereMaterial;
 
   //defino mi loader, para usar JSON. y de paso el de OBJ tambien.
   loader = new THREE.JSONLoader();
   loaderOBJ = new THREE.ObjectLoader();
 
-  loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
 
-    for ( var k in materials ) {
-      alert(k);
-      materials[k].skinning = true;
 
-    }
-
-    skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MultiMaterial(materials));
-    skinnedMesh.scale.set( 1, 1, 1 );
-
-    // Note: We test the corresponding code path with this example -
-    // you shouldn't include the next line into your own code:
-    //skinnedMesh.skeleton.useVertexTexture = false; //???
-     var animation = new THREE.Animation(
-           skinnedMesh,
-             geometry.animation
-       );
-
-// Start playing the animation
-        animation.play();
-        init();
-      	animate();
-  });
-
-	//init();
-	//animate();
+	init();
+	animate();
 
 	function init() {	// set the scene size. With this it takes the size of the screen.
 		WIDTH = window.innerWidth,
@@ -91,7 +68,7 @@
 			                            NEAR,
 			                            FAR  );
 		scene = new THREE.Scene();
-    scene.add( skinnedMesh );
+
 
 		// the camera starts at 0,0,0 so pull it back
 		camera.position.z = 300;
@@ -137,6 +114,35 @@
 		scene.add(pointLight);
     scene.add(ambientLight);
 
+    // cargamos pruebaJS
+    loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
+
+      for ( var k in materials ) {
+        alert(k);
+        materials[k].skinning = true;
+
+      }
+
+      skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MultiMaterial(materials));
+      skinnedMesh.scale.set( 1, 1, 1 );
+
+      // Note: We test the corresponding code path with this example -
+      // you shouldn't include the next line into your own code:
+      //skinnedMesh.skeleton.useVertexTexture = false; //???
+       //var animation = new THREE.Animation( no existe mas.
+        //     skinnedMesh,
+          //     geometry.animation
+         );
+
+  // Start playing the animation
+          //animation.play(); no existe, ver lo de arriba.
+          scene.add( skinnedMesh );
+          mixer = new THREE.AnimationMixer( skinnedMesh );
+          mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] ).play();
+          mixer.clipAction( skinnedMesh.geometry.animations[ 1 ] ).play();
+
+    });
+
 
 		// draw!
 		//render();//lo pase adentro de animate, fijarse.
@@ -161,13 +167,14 @@
 	function animate() {
 
   		requestAnimationFrame( animate );
+      if (mixer) mixer.update( clock.getDelta() );
   		controls.update();
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
 
 	}
 	function render() {
-    var delta = clock.getDelta();
-    THREE.AnimationHandler.update( delta );
+  //  var delta = clock.getDelta();
+    //THREE.AnimationHandler.update( delta );
 		renderer.render(scene, camera);
 	}
 
