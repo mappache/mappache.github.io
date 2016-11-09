@@ -124,7 +124,7 @@
       }
 
       skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MultiMaterial(materials));
-      skinnedMesh.scale.set( 1, 1, 1 );
+      skinnedMesh.scale.set( 50, 50, 50 );
 
       // Note: We test the corresponding code path with this example -
       // you shouldn't include the next line into your own code:
@@ -139,7 +139,7 @@
           scene.add( skinnedMesh );
           mixer = new THREE.AnimationMixer( skinnedMesh );
           mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] ).play();
-          mixer.clipAction( skinnedMesh.geometry.animations[ 1 ] ).play();
+          //mixer.clipAction( skinnedMesh.geometry.animations[ 1 ] ).play();
 
     });
 
