@@ -136,10 +136,12 @@
 
   // Start playing the animation
           //animation.play(); no existe, ver lo de arriba.
-          scene.add( skinnedMesh );
           mixer = new THREE.AnimationMixer( skinnedMesh );
-          mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] ).play();
-          //mixer.clipAction( skinnedMesh.geometry.animations[ 1 ] ).play();
+          var perro = mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] );
+          perro.setLoop(THREE.LoopRepeat);
+          //perro.clampWhenFinished = true;
+          perro.play();
+          scene.add( skinnedMesh );
 
     });
 
