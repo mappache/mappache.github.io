@@ -64,7 +64,7 @@
 				loader.load( 'prueba.js', function ( geometry, materials ) {
 
 					for ( var k in materials ) {
-
+						alert(k);
 						materials[k].skinning = true;
 
 					}
@@ -74,7 +74,7 @@
 
 					// Note: We test the corresponding code path with this example -
 					// you shouldn't include the next line into your own code:
-					skinnedMesh.skeleton.useVertexTexture = false;
+					//skinnedMesh.skeleton.useVertexTexture = false; //???
 					 var animation = new THREE.Animation(
     				     skinnedMesh,
   				         geometry.animation
@@ -82,12 +82,14 @@
 
     // Start playing the animation
    				    animation.play();
-					scene.add( skinnedMesh );
+				});
+
+							scene.add( skinnedMesh );
 
 					mixer = new THREE.AnimationMixer( skinnedMesh );
 					mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] ).play();
 
-				});
+
 
 			}
 

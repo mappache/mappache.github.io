@@ -24,15 +24,46 @@
 
 	<script src="../js/THREE/three.min.js"></script>
   <script src="../js/THREE/OrbitControls.js"></script>
+  <script src="../js/THREE/JSONLoader.js"></script>
+  <script src="../js/THREE/ObjectLoader.js"></script>
 	<script type="text/javascript">
 
   var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
-  var renderer, loader, camera, scene, pointLight;
+  var renderer, loader, loaderOBJ, camera, scene, pointLight, ambientLight;
   var container, controls;
   var sphere, sphereMaterial;
 
-	init();
-	animate();
+  //defino mi loader, para usar JSON. y de paso el de OBJ tambien.
+  loader = new THREE.JSONLoader();
+  loaderOBJ = new THREE.ObjectLoader();
+
+  loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
+
+    for ( var k in materials ) {
+      alert(k);
+      materials[k].skinning = true;
+
+    }
+
+    skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MultiMaterial(materials));
+    skinnedMesh.scale.set( 1, 1, 1 );
+
+    // Note: We test the corresponding code path with this example -
+    // you shouldn't include the next line into your own code:
+    //skinnedMesh.skeleton.useVertexTexture = false; //???
+     var animation = new THREE.Animation(
+           skinnedMesh,
+             geometry.animation
+       );
+
+// Start playing the animation
+        animation.play();
+        init();
+      	animate();
+  });
+
+	//init();
+	//animate();
 
 	function init() {	// set the scene size. With this it takes the size of the screen.
 		WIDTH = window.innerWidth,
@@ -60,6 +91,7 @@
 			                            NEAR,
 			                            FAR  );
 		scene = new THREE.Scene();
+    scene.add( skinnedMesh );
 
 		// the camera starts at 0,0,0 so pull it back
 		camera.position.z = 300;
@@ -71,7 +103,7 @@
 		//container.append(renderer.domElement);
 		container.appendChild( renderer.domElement );
 
-		// create the sphere's material
+		/*/ create the sphere's material
     sphereMaterial = new THREE.MeshPhongMaterial( {
        map: THREE.ImageUtils.loadTexture('textures/mappache2.png')
      } ); //aca si se caga, poner un material basico
@@ -84,15 +116,17 @@
 		sphere = new THREE.Mesh( //aca en vez de usar sphereMaterial se podria usar el loader y buscar un obj.
 		   spherePene,
 		   sphereMaterial);
-		sphere.scale.set(1,0.5,1);
+		sphere.scale.set(1,1,1);
 		// add the sphere to the scene
-		scene.add(sphere);
+		scene.add(sphere); */
+    //esfera comentada
 
 		// and the camera
 		scene.add(camera);
 
 		// create a point light
 		pointLight = new THREE.PointLight( 0xFFFFFF );
+    ambientLight = new THREE.AmbientLight( 0xFFFFFF );
 
 		// set its position
 		pointLight.position.x = 10;
@@ -101,6 +135,7 @@
 
 		// add to the scene
 		scene.add(pointLight);
+    scene.add(ambientLight);
 
 
 		// draw!
@@ -122,7 +157,7 @@
     renderer.setSize( window.innerWidth, window.innerHeight );
 
   }
-
+  var clock = new THREE.Clock();
 	function animate() {
 
   		requestAnimationFrame( animate );
@@ -131,6 +166,8 @@
 
 	}
 	function render() {
+    var delta = clock.getDelta();
+    THREE.AnimationHandler.update( delta );
 		renderer.render(scene, camera);
 	}
 
