@@ -25,11 +25,11 @@
 	<script src="../js/THREE/three.min.js"></script>
   <script src="../js/THREE/OrbitControls.js"></script>
 	<script type="text/javascript">
+
   var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
   var renderer, loader, camera, scene, pointLight;
   var container, controls;
   var sphere, sphereMaterial;
-
 
 	init();
 	animate();
@@ -109,6 +109,8 @@
 		//test de lucio
 		controls = new THREE.OrbitControls( camera, renderer.domElement ); //este es la posta
     controls.addEventListener( 'change', render );
+
+    //cambio de tamaño de ventana:
     window.addEventListener( 'resize', onWindowResize, false );
  	}
 
