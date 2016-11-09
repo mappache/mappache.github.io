@@ -139,7 +139,7 @@
           mixer = new THREE.AnimationMixer( skinnedMesh );
           var perro = mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] );
           perro.setLoop(THREE.LoopRepeat);
-          //perro.clampWhenFinished = true;
+          perro.clampWhenFinished = true;
           perro.play();
           scene.add( skinnedMesh );
 
