@@ -82,7 +82,7 @@
                                 render_effects_plugin.enable();
                             }
 
-                            /*/ setup some code to handle when an object is clicked/tapped
+                            // setup some code to handle when an object is clicked/tapped
                             window.addEventListener('object_clicked', function(e) {
                                 var p = awe.projections.view(e.detail.projection_id);
                                 awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
@@ -96,7 +96,7 @@
                                 });
                             }, false);//*/
 
-                            //touching 2.0 MUCHO MAS CORTA - no anda.******
+                            /*/touching 2.0 MUCHO MAS CORTA - no anda.******
                             var fingering;
                             var previousMousePosition = {
                               x: 0,
@@ -145,7 +145,7 @@
                             // add projections to each of the pois
                             awe.projections.add({
                                 id:'n',
-                                scale: {x:15,y:15,z:15},
+                                scale: {x:30,y:30,z:30},
                                 geometry:{ path:'OBJ/light-cruiser-tenryuu.obj' },
                                 rotation: { x:0, y:90, z:0 },
                                 position: { x:0, y:0, z:0 }
@@ -153,19 +153,24 @@
 
                             awe.projections.add({
                                 id:'ne',
-                                scale: {x:10,y:10,z:10},
-                                geometry:{ path: 'OBJ/mappache.obj' },
+                                scale: {x:30,y:30,z:30},
+                                geometry:{ path: 'OBJ/prueba01.obj' },
                                 position: { x:0, y:0, z:0 },
-                                rotation: { x:0, y:0, z:0 },
-                                //texture: {path: 'textures/mappache2.png'},
+                                rotation: { x:0, y:180, z:0 },
+                                material: { path: 'textures/prueba01.mtl' }
+                                //texture: { path: 'textures/prueba01.mtl' },
                             }, { poi_id: 'north_east' });
 
                             awe.projections.add({
-                                id:'e',
-                                geometry:{ shape:'circle', radius:30, segments:110 },
-                                rotation: { x:0, y:0, z:0 },
-                                texture:{ path: 'textures/mappache2.png' },
-                            }, { poi_id: 'east' });
+	                           id:'e',
+                            geometry:{ shape:'cube', x:50, y:50, z:50 },
+                            rotation:{ x:30, y:30, z:0 },
+                             material:{
+                                 type: 'phong'
+                                 //color:0x00FF00,
+                              },
+                              texture: {path: 'prueba01.wmv'},
+                           }, { poi_id: 'east' });
 
                             awe.projections.add({
                                 id:'se',
@@ -178,7 +183,7 @@
 
                             awe.projections.add({
                                 id:'s',
-                                scale: {x:1,y:1,z:1},
+                                scale: {x:0.7,y:0.7,z:0.7},
                                 geometry:{ path: 'OBJ/Harley.obj'},
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:0, z:0 },
@@ -206,10 +211,10 @@
                             awe.projections.add({
                                 id:'nw',
                                 scale: {x:15, y:15, z:15},
-				                        geometry: { path: 'OBJ/Barbarian_Female.obj' },
+				                        geometry: { path: 'OBJ/Fan.obj' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:180, z:0 },
-                                //texture: {path: 'textures/Fan_Col.png'},
+                                texture: {path: 'textures/Fan_Col.png'},
                             }, { poi_id: 'north_west' });
 
                         },
