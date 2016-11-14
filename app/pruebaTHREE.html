@@ -112,7 +112,7 @@
                 mesh.scale.set( 50, 50, 50 );
 
 								mixer = new THREE.AnimationMixer( mesh );
-			          var perro = mixer.clipAction( mesh.geometry.animations[ 2 ] );//0 quiza sea todo, los otros indices pueden ser cada elem solo
+			          var perro = mixer.clipAction( mesh.geometry.animations[ 1 ] );//0 quiza sea todo, los otros indices pueden ser cada elem solo
 			          perro.setLoop(THREE.LoopRepeat);
 			          perro.clampWhenFinished = true;
 			          perro.play();
