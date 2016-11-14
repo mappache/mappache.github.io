@@ -97,7 +97,7 @@
 		scene.add(pointLight);
     scene.add(ambientLight);
 
-
+		var clock = new THREE.Clock();
 
 		var loader = new THREE.JSONLoader();
 
@@ -122,6 +122,7 @@
 			          perro.play();
 			          scene.add( mesh );
 
+								mixer.update( clock.getDelta() );
 
 
                 //var animation = new THREE.AnimationMixer(
