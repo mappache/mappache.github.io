@@ -115,7 +115,7 @@
                 mesh = new THREE.SkinnedMesh( geometry, mat );
                 mesh.scale.set( 50, 50, 50 );
 
-								var mixer = new THREE.AnimationMixer( mesh );
+								mixer = new THREE.AnimationMixer( mesh );
 			          var perro = mixer.clipAction( mesh.geometry.animations[ 0 ] );//0 quiza sea todo, los otros indices pueden ser cada elem solo
 			          //perro.setLoop(THREE.LoopRepeat);
 			          //perro.clampWhenFinished = true;
@@ -186,10 +186,9 @@
   }
   var clock = new THREE.Clock();
 	function animate() {
-			var clock = new THREE.Clock();
   		requestAnimationFrame( animate );
       //if (mixer) mixer.update( clock.getDelta() );
-			mixer.update( clock.getDelta() );
+			//mixer.update( clock.getDelta() );
   		controls.update();
 
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
