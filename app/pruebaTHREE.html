@@ -103,7 +103,7 @@
 
             loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
 
-                var originalMaterial = materials[ 1 ];
+                var originalMaterial = materials[ 0 ];
                 originalMaterial.skinning = true;
 
                 mesh = new THREE.SkinnedMesh( geometry, originalMaterial );
