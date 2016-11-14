@@ -115,7 +115,7 @@
                 mesh = new THREE.SkinnedMesh( geometry, mat );
                 mesh.scale.set( 50, 50, 50 );
 
-								mixer = new THREE.AnimationMixer( mesh );
+								var mixer = new THREE.AnimationMixer( mesh );
 			          var perro = mixer.clipAction( mesh.geometry.animations[ 0 ] );//0 quiza sea todo, los otros indices pueden ser cada elem solo
 			          //perro.setLoop(THREE.LoopRepeat);
 			          //perro.clampWhenFinished = true;
