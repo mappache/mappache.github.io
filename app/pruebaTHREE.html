@@ -185,10 +185,10 @@
   }
   var clock = new THREE.Clock();
 	function animate() {
-
+			var clock = new THREE.Clock();
   		requestAnimationFrame( animate );
       //if (mixer) mixer.update( clock.getDelta() );
-			mixer.update( clock.getDelta() );
+			perro.update( clock.getDelta() );
   		controls.update();
 
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
