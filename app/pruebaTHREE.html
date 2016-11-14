@@ -39,7 +39,7 @@
 
 
 	init();
-	animate();
+	//animate();
 	//animate(skinnedMesh);//prueba polemica
 
 	function init() {	// set the scene size. With this it takes the size of the screen.
@@ -122,8 +122,8 @@
 			          perro.play();
 			          scene.add( mesh );
 
-								mixer.update( clock.getDelta() );
-
+								//mixer.update( clock.getDelta() );
+								animate();
 
                 //var animation = new THREE.AnimationMixer(
                 //    mesh,
@@ -188,7 +188,7 @@
 	function animate() {
   		requestAnimationFrame( animate );
       //if (mixer) mixer.update( clock.getDelta() );
-			//mixer.update( clock.getDelta() );
+			mixer.update( clock.getDelta() );
   		controls.update();
 
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
