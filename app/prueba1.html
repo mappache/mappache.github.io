@@ -94,41 +94,7 @@
                                     },
                                     where:{ id:e.detail.projection_id }
                                 });
-                            }, false);//*/
-
-                            /*/touching 2.0 MUCHO MAS CORTA - no anda.******
-                            var fingering;
-                            var previousMousePosition = {
-                              x: 0,
-                              y: 0
-                            };
-                            window.addEventListener('mousedown', function(e) {
-                              var fingering = true;
-                              var p = awe.projections.view(e.detail.projection_id)
-                            });
-                            window.addEventListener('mousedrag', function(e) {
-                              var deltaMove = {
-                                x: e.offsetX-previousMousePosition.x,
-                                y: e.offsetY-previousMousePosition.y
-                              };
-                              if(fingering){
-                                awe.projections.update({
-                                  data:{
-                                    rotation:{
-                                      y: p.rotation.deltaMove.y,
-                                      x: p.rotation.deltaMove.x //sera que funca?
-                                    },
-                                    where:{ id:e.detail.projection_id } }
-                                });
-                              }//lave del if
-                              previousMousePosition = {
-                                x: e.offsetX,
-                                y: e.offsetY
-                              };
-                            });
-                            window.addEventListener('mouseup',function(e) {
-                              fingering = false;
-                            });//*/
+                            }, false);
 
 
 

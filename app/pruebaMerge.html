@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Sample Three.js</title>
+		<!-- Position y overflow asi sirven para que no haya scroll -->
+		<style>
+			#container {
+				background: #000;
+				position: absolute;
+				overflow: hidden;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+
+	<script type="text/javascript" src="../js/AWE/awe-v8.js"></script>
+	<script type="text/javascript" src="../js/AWE/awe-loader.js"></script>
+	<script src="../js/THREE/three.js"></script>
+  <script src="../js/THREE/OrbitControls.js"></script>
+  <script src="../js/THREE/JSONLoader.js"></script>
+  <script src="../js/THREE/ObjectLoader.js"></script>
+	<script type="text/javascript">
+
+  var WIDTH, HEIGHT, VIEW_ANGLE, ASPECT, NEAR, FAR;
+  var renderer, loader, loaderOBJ, camera, scene, pointLight, ambientLight;
+  var container, controls, mixer;
+  var sphere, sphereMaterial;
+
+  //defino mi loader, para usar JSON. y de paso el de OBJ tambien.
+  loader = new THREE.JSONLoader();
+  loaderOBJ = new THREE.ObjectLoader();
+
+
+
+	init();
+	animate();
+
+	function init() {	// set the scene size. With this it takes the size of the screen.
+		WIDTH = window.innerWidth,
+		HEIGHT = window.innerHeight;
+
+		// set some camera attributes
+		VIEW_ANGLE = 45,
+		ASPECT = WIDTH / HEIGHT,
+		NEAR = 0.1,
+		FAR = 10000;
+
+		// get the DOM element to attach to
+		// - assume we've got jQuery to hand
+
+		container = document.createElement( 'div' );
+		container.id = 'container';
+		document.body.appendChild( container );
+
+
+		// create a WebGL renderer, camera
+		// and a scene
+		renderer = new THREE.WebGLRenderer();
+		camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
+			                            ASPECT,
+			                            NEAR,
+			                            FAR  );
+		scene = new THREE.Scene();
+
+
+		// the camera starts at 0,0,0 so pull it back
+		camera.position.z = 300;
+
+		// start the renderer
+		renderer.setSize(WIDTH, HEIGHT);
+
+		// attach the render-supplied DOM element
+		//container.append(renderer.domElement);
+		container.appendChild( renderer.domElement );
+
+		/*/ create the sphere's material
+    sphereMaterial = new THREE.MeshPhongMaterial( {
+       map: THREE.ImageUtils.loadTexture('textures/mappache2.png')
+     } ); //aca si se caga, poner un material basico
+
+		// set up the sphere vars
+		var radius = 50, segments = 16, rings = 16;
+    var spherePene = new THREE.SphereGeometry(radius, segments, rings);
+
+		// create a new mesh with sphere geometry
+		sphere = new THREE.Mesh( //aca en vez de usar sphereMaterial se podria usar el loader y buscar un obj.
+		   spherePene,
+		   sphereMaterial);
+		sphere.scale.set(1,1,1);
+		// add the sphere to the scene
+		scene.add(sphere); */
+    //esfera comentada
+
+		// and the camera
+		scene.add(camera);
+
+		// create a point light
+		pointLight = new THREE.PointLight( 0xFFFFFF );
+    ambientLight = new THREE.AmbientLight( 0xFFFFFF );
+
+		// set its position
+		pointLight.position.x = 10;
+		pointLight.position.y = 50;
+		pointLight.position.z = 130;
+
+		// add to the scene
+		scene.add(pointLight);
+    scene.add(ambientLight);
+
+    // cargamos pruebaJS
+    loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
+
+      for ( var k in materials ) {
+        alert(k);
+        materials[k].skinning = true;
+
+      }
+
+      skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MultiMaterial(materials));
+      skinnedMesh.scale.set( 50, 50, 50 );
+
+      // Note: We test the corresponding code path with this example -
+      // you shouldn't include the next line into your own code:
+      //skinnedMesh.skeleton.useVertexTexture = false; //???
+       //var animation = new THREE.Animation( no existe mas.
+        //     skinnedMesh,
+          //     geometry.animation
+         //);
+
+  // Start playing the animation
+          //animation.play(); no existe, ver lo de arriba.
+          mixer = new THREE.AnimationMixer( skinnedMesh );
+          var perro = mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] );
+          perro.setLoop(THREE.LoopRepeat);
+          perro.clampWhenFinished = true;
+          perro.play();
+          scene.add( skinnedMesh );
+
+    });
+
+
+		// draw!
+		//render();//lo pase adentro de animate, fijarse.
+
+		//test de lucio
+		controls = new THREE.OrbitControls( camera, renderer.domElement ); //este es la posta
+    controls.addEventListener( 'change', render );
+
+    //cambio de tamaño de ventana:
+    window.addEventListener( 'resize', onWindowResize, false );
+ 	}
+
+  function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+  }
+  var clock = new THREE.Clock();
+	function animate() {
+
+  		requestAnimationFrame( animate );
+      if (mixer) mixer.update( clock.getDelta() );
+  		controls.update();
+      //render(); //quiza mas feliz aca. sino adentro de onWindowResize().
+
+	}
+	//function render() {
+  //  var delta = clock.getDelta();
+    //THREE.AnimationHandler.update( delta );
+		//renderer.render(scene, camera);
+	}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    window.addEventListener('load', function() {
+        // initialize awe after page loads
+        window.awe.init({
+            // automatically detect the device type
+            device_type: awe.AUTO_DETECT_DEVICE_TYPE,
+            // populate some default settings
+            settings: {
+                container_id: 'container',
+                fps: 30,
+                default_camera_position: { x:0, y:0, z:0 },
+                default_lights:[
+                    {
+                        id: 'hemisphere_light',
+                        type: 'hemisphere',
+                        color: 0xCCCCCC
+                    },
+                ],
+            },
+            ready: function() {
+                var d = '?_='+Date.now();
+
+                // load js files based on capability detection then setup the scene if successful
+                awe.util.require([
+                    {
+                        capabilities: ['webgl','gum'],
+                        files: [
+                            [ '../js/AWE/awe-standard-dependencies.js'+d, '../js/AWE/awe-standard.js'+d ], // core dependencies for this app
+                            ['../js/plugins/StereoEffect.js'+d, '../js/plugins/VREffect.js'+d], // dependencies for render effects
+                            '../js/plugins/awe.rendering_effects.js'+d, '../marker_ar/awe.marker_ar.js'+d,
+                            '../marker_ar/awe-jsartoolkit-dependencies.js',
+                            '../js/plugins/awe-standard-object_clicked_or_focused.js'+d, // object click/tap handling plugin
+                            'awe.gyro.js'+d, // basic gyro handling
+                            'awe.mouse.js'+d, // basic mouse handling
+                        ],
+                        success: function() {
+                            // setup and paint the scene
+                            awe.setup_scene();
+                            /*/ HAY QUE REGISTRAR ALGUN PLUGIN PARA EL TOUCH*****
+                            var click_plugin = awe.plugins.view('object_clicked');
+                            if (click_plugin) {
+                                click_plugin.register();
+                                click_plugin.enable();
+                            }//*/
+                            var gyro_plugin = awe.plugins.view('gyro');
+                            if (gyro_plugin) {
+                                gyro_plugin.enable();
+                            }
+                            var mouse_plugin = awe.plugins.view('gyro');
+                            if (gyro_plugin) {
+                                gyro_plugin.enable();
+                            }
+
+                            awe.settings.update({data:{value: 'ar'}, where:{id: 'view_mode'}})
+                            var render_effects_plugin = awe.plugins.view('render_effects');
+                            if (render_effects_plugin) {
+                                render_effects_plugin.enable();
+                            }
+
+                            /*/ setup some code to handle when an object is clicked/tapped
+                            window.addEventListener('object_clicked', function(e) {
+                                var p = awe.projections.view(e.detail.projection_id);
+                                awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
+                                    data:{
+                                        animation: {
+                                            duration: 10,
+                                        },
+                                        rotation:{ y: p.rotation.y+180, x: p.rotation.x+180 }
+                                    },
+                                    where:{ id:e.detail.projection_id }
+                                });
+                            }, false); //*/
+
+
+
+                            // add some points of interest (poi) for each of the compass points
+                            awe.pois.add({ id:'north', position: { x:0, y:0, z:200 } });
+
+                            // add projections to each of the pois
+                            awe.projections.add({
+                                id:'n',
+                                object: skinnedMesh,//o perro o skinnedMesh
+                            }, { poi_id: 'north' });
+
+                        },
+                    },
+                    { // else create a fallback
+                        capabilities: [],
+                        files: [],
+                        success: function() {
+                            document.body.innerHTML = '<p>This demo currently requires a standards compliant mobile browser.';
+                            return;
+                        },
+                    },
+                ]);
+            }
+        });
+    });
+</script>
+</body>
+</html>
