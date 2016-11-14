@@ -39,7 +39,8 @@
 
 
 	init();
-	animate();
+	//animate();
+	animate(skinnedMesh);//prueba polemica
 
 	function init() {	// set the scene size. With this it takes the size of the screen.
 		WIDTH = window.innerWidth,
@@ -125,21 +126,13 @@
       skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MultiMaterial(materials));
       skinnedMesh.scale.set( 50, 50, 50 );
 
-      // Note: We test the corresponding code path with this example -
-      // you shouldn't include the next line into your own code:
-      //skinnedMesh.skeleton.useVertexTexture = false; //???
-       //var animation = new THREE.Animation( no existe mas.
-        //     skinnedMesh,
-          //     geometry.animation
-         //);
 				 var originalMaterial = materials[ 1 ]; //no es necesario. estoy probando cosas.
          originalMaterial.skinning = true;
 
   // Start playing the animation
-          //animation.play(); no existe, ver lo de arriba.
+
           mixer = new THREE.AnimationMixer( skinnedMesh );
           var perro = mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] );
-					//var perro = mixer.clipAction( skinnedMesh.materials.animations[ 1 ] );
           perro.setLoop(THREE.LoopRepeat);
           perro.clampWhenFinished = true;
           perro.play();
@@ -168,12 +161,16 @@
 
   }
   var clock = new THREE.Clock();
-	function animate() {
+	function animate(skinnedMesh) {//antes no tenia parametro
 
   		requestAnimationFrame( animate );
       if (mixer) mixer.update( clock.getDelta() );
+//begin testeo
+			animation = new THREE.Animation(skinnedMesh, skinnedMesh.geometry.animation);
+ 			animation.play();
+//end testeo
   		controls.update();
-			
+
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
 
 	}
