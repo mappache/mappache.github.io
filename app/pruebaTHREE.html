@@ -97,6 +97,40 @@
 		scene.add(pointLight);
     scene.add(ambientLight);
 
+
+
+		var loader = new THREE.JSONLoader();
+
+            loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
+
+                var originalMaterial = materials[ 1 ];
+                originalMaterial.skinning = true;
+
+                mesh = new THREE.SkinnedMesh( geometry, originalMaterial );
+                mesh.scale.set( 3, 3, 3 );
+
+								mixer = new THREE.AnimationMixer( mesh );
+			          var perro = mixer.clipAction( mesh.geometry.animations[ 0 ] );
+			          perro.setLoop(THREE.LoopRepeat);
+			          perro.clampWhenFinished = true;
+			          perro.play();
+			          scene.add( mesh );
+
+
+
+                //var animation = new THREE.AnimationMixer(
+                //    mesh,
+                //    geometry.animation
+                //);
+                //animation.play();
+
+							});
+
+
+
+
+
+		/*
     // cargamos pruebaJS
     loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
 
@@ -122,7 +156,7 @@
           scene.add( skinnedMesh );
 
     });
-
+		//*/
 
 		// draw!
 		//render();//lo pase adentro de animate, fijarse.
