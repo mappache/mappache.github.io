@@ -137,7 +137,7 @@
           //animation.play(); no existe, ver lo de arriba.
           mixer = new THREE.AnimationMixer( skinnedMesh );
           //var perro = mixer.clipAction( skinnedMesh.geometry.animations[ 0 ] );
-					var perro = mixer.clipAction( skinnedMesh.material.animations[ 1 ] );
+					var perro = mixer.clipAction( skinnedMesh.MultiMaterial.animations[ 1 ] );
           perro.setLoop(THREE.LoopRepeat);
           perro.clampWhenFinished = true;
           perro.play();
