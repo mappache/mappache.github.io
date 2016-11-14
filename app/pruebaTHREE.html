@@ -103,14 +103,16 @@
 
             loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
 
-                var originalMaterial = materials[ 0 ];
+                var rojoMaterial = materials[ 0 ];
+								var grisMaterial = materials[ 1 ];
                 originalMaterial.skinning = true;
+								var mat = new THREE.MultiMaterial(materials);
 
-                mesh = new THREE.SkinnedMesh( geometry, originalMaterial );
-                mesh.scale.set( 3, 3, 3 );
+                mesh = new THREE.SkinnedMesh( geometry, mat );
+                mesh.scale.set( 50, 50, 50 );
 
 								mixer = new THREE.AnimationMixer( mesh );
-			          var perro = mixer.clipAction( mesh.geometry.animations[ 0 ] );
+			          var perro = mixer.clipAction( mesh.geometry.animations[ 2 ] );//0 quiza sea todo, los otros indices pueden ser cada elem solo
 			          perro.setLoop(THREE.LoopRepeat);
 			          perro.clampWhenFinished = true;
 			          perro.play();
