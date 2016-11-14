@@ -103,6 +103,12 @@
 
             loader.load( 'OBJ/prueba.js', function ( geometry, materials ) {
 
+							for ( var k in geometry ) {
+				        alert(k);
+				        
+
+				      }
+
                 var rojoMaterial = materials[ 0 ];
 								var grisMaterial = materials[ 1 ];
 								var mat = new THREE.MultiMaterial(materials);
