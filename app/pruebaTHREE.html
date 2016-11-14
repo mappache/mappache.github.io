@@ -105,8 +105,8 @@
 
                 var rojoMaterial = materials[ 0 ];
 								var grisMaterial = materials[ 1 ];
-                originalMaterial.skinning = true;
 								var mat = new THREE.MultiMaterial(materials);
+								mat.skinning = true;
 
                 mesh = new THREE.SkinnedMesh( geometry, mat );
                 mesh.scale.set( 50, 50, 50 );
