@@ -103,10 +103,8 @@
 
             loader.load( 'OBJ/test2.js', function ( geometry, materials ) {
 
-							for ( var k in geometry ) {
+							for ( var k in materials ) {
 				        alert(k);
-
-
 				      }
 
                 var rojoMaterial = materials[ 0 ];
@@ -119,8 +117,8 @@
 
 								mixer = new THREE.AnimationMixer( mesh );
 			          var perro = mixer.clipAction( mesh.geometry.animations[ 0 ] );//0 quiza sea todo, los otros indices pueden ser cada elem solo
-			          perro.setLoop(THREE.LoopRepeat);
-			          perro.clampWhenFinished = true;
+			          //perro.setLoop(THREE.LoopRepeat);
+			          //perro.clampWhenFinished = true;
 			          perro.play();
 			          scene.add( mesh );
 
@@ -189,7 +187,8 @@
 	function animate() {
 
   		requestAnimationFrame( animate );
-      if (mixer) mixer.update( clock.getDelta() );
+      //if (mixer) mixer.update( clock.getDelta() );
+			mixer.update( clock.getDelta() );
   		controls.update();
 
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
