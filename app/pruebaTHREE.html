@@ -39,8 +39,8 @@
 
 
 	init();
-	//animate();
-	animate(skinnedMesh);//prueba polemica
+	animate();
+	//animate(skinnedMesh);//prueba polemica
 
 	function init() {	// set the scene size. With this it takes the size of the screen.
 		WIDTH = window.innerWidth,
@@ -80,23 +80,6 @@
 		//container.append(renderer.domElement);
 		container.appendChild( renderer.domElement );
 
-		/*/ create the sphere's material
-    sphereMaterial = new THREE.MeshPhongMaterial( {
-       map: THREE.ImageUtils.loadTexture('textures/mappache2.png')
-     } ); //aca si se caga, poner un material basico
-
-		// set up the sphere vars
-		var radius = 50, segments = 16, rings = 16;
-    var spherePene = new THREE.SphereGeometry(radius, segments, rings);
-
-		// create a new mesh with sphere geometry
-		sphere = new THREE.Mesh( //aca en vez de usar sphereMaterial se podria usar el loader y buscar un obj.
-		   spherePene,
-		   sphereMaterial);
-		sphere.scale.set(1,1,1);
-		// add the sphere to the scene
-		scene.add(sphere); */
-    //esfera comentada
 
 		// and the camera
 		scene.add(camera);
@@ -161,14 +144,10 @@
 
   }
   var clock = new THREE.Clock();
-	function animate(skinnedMesh) {//antes no tenia parametro
+	function animate() {
 
   		requestAnimationFrame( animate );
       if (mixer) mixer.update( clock.getDelta() );
-//begin testeo
-			animation = new THREE.Animation(skinnedMesh, skinnedMesh.geometry.animation);
- 			animation.play();
-//end testeo
   		controls.update();
 
       render(); //quiza mas feliz aca. sino adentro de onWindowResize().
