@@ -1,0 +1,105 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 31.08.2012 12:35:51
+
+newmtl _low_building_02low_01
+	Ns 15.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0471 0.0000 0.9608
+	Kd 0.0471 0.0000 0.9608
+	Ks 0.7110 0.7110 0.7110
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\low_01_diffuse.jpg
+	map_Kd tex\low_01_diffuse.jpg
+	map_Ke tex\low_01_illumination.jpg
+	map_bump -bm 0.3000 tex\low_01_normal.jpg
+	bump -bm 0.3000 tex\low_01_normal.jpg
+	map_refl tex\low_01_reflection.jpg
+
+newmtl _low_building_02AntenneLamp
+	Ns 29.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.9529 0.2157 0.8039
+	Kd 0.9529 0.2157 0.8039
+	Ks 0.5220 0.5220 0.5220
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\roof_lamp_diffuse.jpg
+	map_Kd tex\roof_lamp_diffuse.jpg
+	map_Ks tex\roof_lamp_specular.jpg
+	map_Ke tex\roof_lamp_illumination.jpg
+
+newmtl _low_building_02double_antenne
+	Ns 27.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0784 0.8784 0.1373
+	Kd 0.0784 0.8784 0.1373
+	Ks 0.6570 0.6570 0.6570
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\double_antenne_diffuse.jpg
+	map_Kd tex\double_antenne_diffuse.jpg
+	map_Ks tex\double_antenne_specular.jpg
+	map_Ke tex\double_antenne_illumination.jpg
+
+newmtl 07___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.8471 0.8196 0.0275
+	Kd 0.8471 0.8196 0.0275
+	Ks 0.6390 0.6390 0.6390
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\simple_antenne_diffusion.jpg
+	map_Kd tex\simple_antenne_diffusion.jpg
+	map_Ks tex\simple_antenne_specular.jpg
+	map_Ke tex\simple_antenne_illumination.jpg
+
+newmtl 08___Default
+	Ns 22.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.8471 1.0000
+	Kd 0.0000 0.8471 1.0000
+	Ks 0.7650 0.7650 0.7650
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\air_shaft_diffuse.jpg
+	map_Kd tex\air_shaft_diffuse.jpg
+	map_Ks tex\air_shaft_specular.jpg
+	map_bump -bm 0.3000 tex\air_shaft_normal.jpg
+	bump -bm 0.3000 tex\air_shaft_normal.jpg
+	map_refl tex\air_shaft_reflections.jpg
+
+newmtl 09___Default
+	Ns 15.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 0.0000 0.0000
+	Kd 1.0000 0.0000 0.0000
+	Ks 0.4950 0.4950 0.4950
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\ac_diffuse.jpg
+	map_Kd tex\ac_diffuse.jpg
+	map_Ks tex\ac_specular.jpg
+	map_Ke tex\ac_illumination.jpg
+	map_bump -bm 0.3000 tex\ac_normal.jpg
+	bump -bm 0.3000 tex\ac_normal.jpg
+	map_refl tex\ac_reflection.jpg
