@@ -106,6 +106,8 @@
                              This automatically binds your POI to that marker id - easy!
                              */
                             awe.pois.add({ id:'jsartoolkit_marker_64', position: { x:0, y:0, z:0 }, visible: false });
+
+                            /*
                             awe.projections.add({
                                 id:'marker_projection',
                                 scale: {x:50,y:50,z:50},
@@ -114,16 +116,26 @@
                                 rotation: { x:-90, y:0, z:0 },
                                 texture: { path: 'textures/Po.png' },
                                 visible: false,
+                            }, { poi_id: 'jsartoolkit_marker_64' });// */
+
+                            awe.projections.add({
+                                id:'marker_projection',
+                                scale: {x:50,y:50,z:50},
+                                geometry: { path: 'OBJ/EDIFICIO/apartment_01.obj' },
+                                position: { x:0, y:0, z:0 },
+                                rotation: { x:-90, y:0, z:0 },
+                                texture: { path: 'OBJ/EDIFICIO/apartment_01.mtl' },
+                                visible: false,
                             }, { poi_id: 'jsartoolkit_marker_64' });
 
                             // animate the fixed POI
                             awe.projections.update({
-
+                              /*
                                 data:{
                                  animation: { duration: 5, persist: 0, repeat: Infinity },
                                  rotation: { x: 360 },
                                  },
-                                 where:{ id:"marker_projection" },//*/
+                                 where:{ id:"marker_projection" },// */
                             });
 
                             awe.plugins.view('render_effects').enable();
