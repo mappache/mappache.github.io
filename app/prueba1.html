@@ -116,7 +116,7 @@
                                 rotation: { x:0, y:90, z:0 },
                                 position: { x:0, y:0, z:0 }
                             }, { poi_id: 'north' }); //*/
-
+                            /*
                             awe.projections.add({
                                 id:'ne',
                                 scale: {x:30,y:30,z:30},
@@ -125,14 +125,14 @@
                                 rotation: { x:0, y:180, z:0 },
                                 material: { path: 'textures/prueba01.mtl' }
                                 //texture: { path: 'textures/prueba01.mtl' },
-                            }, { poi_id: 'north_east' });
+                            }, { poi_id: 'north_east' }); // */
 
                             awe.projections.add({
 	                           id:'e',
                             geometry:{ shape:'cube', x:50, y:50, z:50 },
                             rotation:{ x:30, y:30, z:0 },
                              material:{
-                                 type: 'phong'
+                                 type: 'awe_texture'
                                  //color:0x00FF00,
                               },
                               texture: {path: 'textures/prueba01.wmv'}
