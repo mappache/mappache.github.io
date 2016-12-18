@@ -12,11 +12,11 @@ newmtl _apartment_01_quads_NewSat01
 	Kd 0.9686 0.5882 0.9098
 	Ks 0.8460 0.8460 0.8460
 	Ke 0.0000 0.0000 0.0000
-	map_Ka buildings_alternate_files\tex\sat_01_diffuse.jpg
-	map_Kd buildings_alternate_files\tex\sat_01_diffuse.jpg
-	map_Ks buildings_alternate_files\tex\sat_01_specular.jpg
-	map_Ke buildings_alternate_files\tex\sat_01_illumination.jpg
-	map_refl buildings_alternate_files\tex\sat_01_reflection.jpg
+	map_Ka tex\sat_01_diffuse.jpg
+	map_Kd tex\sat_01_diffuse.jpg
+	map_Ks tex\sat_01_specular.jpg
+	map_Ke tex\sat_01_illumination.jpg
+	map_refl tex\sat_01_reflection.jpg
 
 newmtl _apartment_01_quads_antenna
 	Ns 20.0000
@@ -29,10 +29,10 @@ newmtl _apartment_01_quads_antenna
 	Kd 0.9725 0.5882 0.6510
 	Ks 0.9360 0.9360 0.9360
 	Ke 0.0000 0.0000 0.0000
-	map_Ka buildings_alternate_files\tex\simple_antenne_diffusion.jpg
-	map_Kd buildings_alternate_files\tex\simple_antenne_diffusion.jpg
-	map_Ks buildings_alternate_files\tex\simple_antenne_specular.jpg
-	map_Ke buildings_alternate_files\tex\simple_antenne_illumination.jpg
+	map_Ka tex\simple_antenne_diffusion.jpg
+	map_Kd tex\simple_antenne_diffusion.jpg
+	map_Ks tex\simple_antenne_specular.jpg
+	map_Ke tex\simple_antenne_illumination.jpg
 
 newmtl _apartment_01_quads__apartment_01_quads_NewNewMat
 	Ns 44.0000
@@ -45,10 +45,10 @@ newmtl _apartment_01_quads__apartment_01_quads_NewNewMat
 	Kd 0.5882 0.9569 0.7804
 	Ks 0.2160 0.2160 0.2160
 	Ke 0.0000 0.0000 0.0000
-	map_Ka buildings_alternate_files\tex\apartment_01_diffuse.jpg
-	map_Kd buildings_alternate_files\tex\apartment_01_diffuse.jpg
-	map_Ks buildings_alternate_files\tex\apartment_01_specular.jpg
-	map_Ke buildings_alternate_files\tex\apartment_01_illumination.jpg
-	map_bump -bm 0.3000 buildings_alternate_files\tex\apartment_01_normal.jpg
-	bump -bm 0.3000 buildings_alternate_files\tex\apartment_01_normal.jpg
-	map_refl buildings_alternate_files\tex\apartment_01_reflection.jpg
+	map_Ka tex\apartment_01_diffuse.jpg
+	map_Kd tex\apartment_01_diffuse.jpg
+	map_Ks tex\apartment_01_specular.jpg
+	map_Ke tex\apartment_01_illumination.jpg
+	map_bump -bm 0.3000 tex\apartment_01_normal.jpg
+	bump -bm 0.3000 tex\apartment_01_normal.jpg
+	map_refl tex\apartment_01_reflection.jpg

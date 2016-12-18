@@ -1,0 +1,54 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 17.08.2012 12:04:26
+
+newmtl _apartment_02_quads_NewApartment_02
+	Ns 26.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.8706 0.5882 0.8000
+	Kd 0.8706 0.5882 0.8000
+	Ks 0.6840 0.6840 0.6840
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\apartment_02_diffuse.jpg
+	map_Kd tex\apartment_02_diffuse.jpg
+	map_Ks tex\apartment_02_specular.jpg
+	map_Ke tex\apartment_02_illumination.jpg
+	map_bump -bm 0.3000 tex\apartment_02_normal.jpg
+	bump -bm 0.3000 tex\apartment_02_normal.jpg
+	map_refl tex\apartment_02_reflection.jpg
+
+newmtl _apartment_02_quads_antenna
+	Ns 20.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.9725 0.5882 0.6510
+	Kd 0.9725 0.5882 0.6510
+	Ks 0.9360 0.9360 0.9360
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\simple_antenne_diffusion.jpg
+	map_Kd tex\simple_antenne_diffusion.jpg
+	map_Ks tex\simple_antenne_specular.jpg
+	map_Ke tex\simple_antenne_illumination.jpg
+
+newmtl _apartment_02_quads_NewCasino_Sign
+	Ns 37.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.6549 0.5882 0.9176
+	Kd 0.6549 0.5882 0.9176
+	Ks 0.6480 0.6480 0.6480
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\casino_sign_diffuse.jpg
+	map_Kd tex\casino_sign_diffuse.jpg
+	map_Ks tex\casino_sign_specular.jpg
+	map_Ke tex\casino_sign_illumination.jpg
+	map_refl tex\casino_sign_reflection.jpg
