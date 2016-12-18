@@ -1,0 +1,49 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 11.09.2012 09:42:48
+
+newmtl _building_05_quads_building
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.4410 0.4410 0.4410
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\building_05_diffuse.jpg
+	map_Kd tex\building_05_diffuse.jpg
+	map_Ks tex\building_05_specular.jpg
+	map_Ke tex\building_05_illumination.jpg
+
+newmtl _building_05_quads_roof2
+	Ns 14.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.3330 0.3330 0.3330
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\roof_02_diffuse.jpg
+	map_Kd tex\roof_02_diffuse.jpg
+	map_Ks tex\roof_02_specular.jpg
+	map_Ke tex\roof_02_illumination.jpg
+
+newmtl _building_05_quads_roof
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.4770 0.4770 0.4770
+	Ke 0.0000 0.0000 0.0000
+	map_Ka tex\roof_props_diffuse.jpg
+	map_Kd tex\roof_props_diffuse.jpg
+	map_Ks tex\roof_props_specular.jpg
