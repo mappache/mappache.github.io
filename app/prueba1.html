@@ -176,10 +176,11 @@
                             awe.projections.add({
                                 id:'nw',
                                 scale: {x:25, y:25, z:25},
-				                        geometry: { path: 'OBJ/Fan.obj' },
+				                        geometry: { path: 'OBJ/merge.stl' },
                                 position: { x:0, y:0, z:0 },
                                 rotation: { x:0, y:180, z:0 },
-                                texture: {path: 'textures/Fan_Col.png'}
+                                material: {type: 'phong'}
+                                //texture: {path: 'textures/Fan_Col.png'}
                             }, { poi_id: 'north_west' });
 
                         },
